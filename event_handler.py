@@ -107,4 +107,3 @@ class EventHandler:
         """
 
         print(f"Processing event: {event}")
-        print(f"Headers: {headers}")

@@ -5,7 +5,7 @@ FROM lukerobertson19/base-os:latest
 LABEL org.opencontainers.image.title="AI Assistant plugin: Palo Alto Firewalls"
 LABEL org.opencontainers.image.description="Palo Alto plugin to manage stand-alone firewalls"
 LABEL org.opencontainers.image.base.name="lukerobertson19/base-os:latest"
-LABEL org.opencontainers.image.source="https://github.com/LukeRoberson/PaloAlto-Plugin"
+LABEL org.opencontainers.image.source="https://github.com/LukeRoberson/Palo-Alto-Plugin"
 LABEL org.opencontainers.image.version="1.0.0"
 
 # Custom Labels for the image
