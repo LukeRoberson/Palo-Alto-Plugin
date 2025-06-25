@@ -1,0 +1,23 @@
+# Definitions to parse system events from PA Firewall webhooks
+#
+# Definitions below contain:
+# - description: A short description of the event. This is used for documentation purposes.
+# - message: A message template that will be used to format the event message.
+# - teams: Optional message template for Microsoft Teams notifications. If not provided, the other message will be used.
+
+
+general:
+  description: ""
+  message: "General event detected: {self.event}"
+
+userid:
+  description: "An alert for the User-ID system. This is not about users themselves."
+  message: "{self.device_name} has detected a {self.name} issue.</br>{self.description}"
+
+lacp:
+  description: "A problem with LACP (Link Aggregation Control Protocol) has been detected."
+  message: "{self.device_name} has detected an LACP {self.name} issue on {self.object}.</br>{self.description}"
+
+default:
+  description: "A default event for firewall webhooks."
+  message: "An unknown event has been received from a firewall."

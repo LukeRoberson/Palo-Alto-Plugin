@@ -1,0 +1,12 @@
+# Definitions to parse Authentication events from PA Firewall webhooks
+#   This is for authentication policies, not GlobalProtect or User-ID authentication.
+#
+# Definitions below contain:
+# - description: A short description of the event. This is used for documentation purposes.
+# - message: A message template that will be used to format the event message.
+# - teams: Optional message template for Microsoft Teams notifications. If not provided, the other message will be used.
+
+
+default:
+  description: "A default event for firewall webhooks."
+  message: "An unknown event has been received from a firewall."

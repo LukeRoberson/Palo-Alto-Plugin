@@ -78,25 +78,6 @@ Add an item for each Log type you want to forward to the agent.
 The payloads for each log type should be configured as shown below, so they can be parsed by the agent.
 </br></br>
 
-Common fields to use:
-```json
-{
-    "alert": {
-        "source": "<SOURCE>",
-        "timestamp": "$time_generated"
-    },
-    "details": {
-        "type": "$type",
-        "subtype": "$subtype"
-    },
-    "device": {
-        "device_name": "$device_name",
-        "sender_sw_version": "$sender_sw_version",
-        "serial": "$serial"
-    }
-}
-```
-
 
 ## Config
 
@@ -183,7 +164,7 @@ Reports on anything related to User-ID, such as when a user is associated with a
 ```json
 {
     "alert": {
-        "source": "<SOURCE>",
+        "source": "userid",
         "timestamp": "$time_generated"
     },
     "details": {
@@ -280,7 +261,7 @@ Used with Authentication policies. Policies > Authentication > Edit Policy > Set
 ```json
 {
     "alert": {
-        "source": "<SOURCE>",
+        "source": "auth",
         "timestamp": "$time_generated"
     },
     "details": {
@@ -327,7 +308,7 @@ https://docs.paloaltonetworks.com/pan-os/10-2/pan-os-admin/policy/register-ip-ad
 ```json
 {
     "alert": {
-        "source": "<SOURCE>",
+        "source": "iptag",
         "timestamp": "$time_generated"
     },
     "details": {
@@ -360,7 +341,7 @@ https://docs.paloaltonetworks.com/pan-os/10-2/pan-os-admin/policy/register-ip-ad
 ```json
 {
     "alert": {
-        "source": "<SOURCE>",
+        "source": "hip",
         "timestamp": "$time_generated"
     },
     "details": {

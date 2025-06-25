@@ -1,4 +1,4 @@
-# Definitions to parse alarm events from PA Firewall webhooks
+# Definitions to parse Decryption events from PA Firewall webhooks
 #
 # Definitions below contain:
 # - description: A short description of the event. This is used for documentation purposes.
