@@ -68,7 +68,7 @@ There are many fields which are common to all these types of alerts.
 | Variable                 | Description                                  | Example Value |
 |--------------------------|----------------------------------------------|---------------|
 | app                      | Application                                  | web-browsing  |
-| category_of_app          | Application category                         |               |
+| category_of_app          | Application category                         | networking    |
 | characteristic_of_app    | App characteristics                          |               |
 | is_saas_of_app           | '1' if this is a SaaS app                    |               |
 | risk_of_app              | Application risk                             |               |
@@ -117,7 +117,7 @@ There are many fields which are common to all these types of alerts.
     "repeatcnt": "$repeatcnt",
     "sessionid": "$sessionid",
     "sessionid_64": "$sessionid_64",
-    "src_dag": "$src_dag",
+    "src_dag": "$src_dag"
 }
 ```
 </br></br>
@@ -135,7 +135,7 @@ There are many fields which are common to all these types of alerts.
 ```json
 {
     "action": "$action",
-    "logset": "$logset",
+    "logset": "$logset"
 }
 ```
 </br></br>
@@ -144,24 +144,24 @@ There are many fields which are common to all these types of alerts.
 
 ### Other
 
-| Variable                     | Description                | Example Value                 |
-|------------------------------|----------------------------|-------------------------------|
-| cluster_name                 |                            |                               |
-| container_id                 |                            |                               |
-| container_of_app             |                            |                               |
-| dst_edl                      |                            |                               |
-| dst_uuid                     |                            |                               |
-| endpoint_id                  |                            |                               |
-| k8s_cluster_id               |                            |                               |
-| pod_name                     |                            |                               |
-| pod_namespace                |                            |                               |
-| s_decrypted                  |                            |                               |
-| s_encrypted                  |                            |                               |
-| security_key                 |                            |                               |
-| src_edl                      |                            |                               |
-| src_uuid                     |                            |                               |
-| time_received                |                            |                               |
-| vpc_id                       |                            |                               |
+| Variable                     | Description                                        | Example Value                 |
+|------------------------------|----------------------------------------------------|-------------------------------|
+| cluster_name                 |                                                    |                               |
+| container_id                 | Kubernetes container ID where VM FW resides        |                               |
+| container_of_app             | The parent application for an application.         |                               |
+| dst_edl                      | EDL containing the destination IP                  |                               |
+| dst_uuid                     | Destination VM UUID                                |                               |
+| endpoint_id                  |                                                    |                               |
+| k8s_cluster_id               |                                                    |                               |
+| pod_name                     | The application POD being secured                  |                               |
+| pod_namespace                | The namespace of the application POD being secured |                               |
+| s_decrypted                  |                                                    |                               |
+| s_encrypted                  |                                                    |                               |
+| security_key                 |                                                    |                               |
+| src_edl                      | EDL containting the source IP                      |                               |
+| src_uuid                     | Source VM UUID                                     |                               |
+| time_received                |                                                    |                               |
+| vpc_id                       |                                                    |                               |
 </br></br>
 
 
@@ -193,92 +193,92 @@ There are many fields which are common to all these types of alerts.
 ----
 ## Traffic
 
-| Variable                     | Description                                  | Example Value                 |
-| ---------------------------- | -------------------------------------------- | ----------------------------- |
-| action_source                |                                              |                               |
-| ai_fwd_error                 |                                              |                               |
-| ai_traffic                   |                                              |                               |
-| assoc_id                     |                                              |                               |
-| bytes                        |                                              |                               |
-| bytes_received               |                                              |                               |
-| bytes_sent                   |                                              |                               |
-| category                     | URL or wildfire verdict                      | computer-and-internet-info    |
-| chunks                       |                                              |                               |
-| chunks_received              |                                              |                               |
-| chunks_sent                  |                                              |                               |
-| dst_category                 |                                              |                               |
-| dst_host                     |                                              |                               |
-| dst_mac                      |                                              |                               |
-| dst_model                    |                                              |                               |
-| dst_osfamily                 |                                              |                               |
-| dst_osversion                |                                              |                               |
-| dst_profile                  |                                              |                               |
-| dst_vendor                   |                                              |                               |
-| dynusergroup_name            |                                              |                               |
-| elapsed                      |                                              |                               |
-| flow_type                    |                                              |                               |
-| hostid                       |                                              |                               |
-| http2_connection             | HTTP/2 session ID                            |                               |
-| http2_connection_64          |                                              |                               |
-| link_change_count            |                                              |                               |
-| link_switches                |                                              |                               |
-| monitortag                   |                                              |                               |
-| ndpmatches                   |                                              |                               |
-| nftrans                      |                                              |                               |
-| nssai_sd                     |                                              |                               |
-| nssai_sst                    |                                              |                               |
-| nthreats                     |                                              |                               |
-| nurlcount                    |                                              |                               |
-| offloaded                    |                                              |                               |
-| packets                      |                                              |                               |
-| parent_session_id            | ID of the session in which this is tunnelled |                               |
-| parent_session_id_64         |                                              |                               |
-| parent_start_time            | Time parent tunnel session began             |                               |
-| pkts_received                |                                              |                               |
-| pkts_sent                    |                                              |                               |
-| policy_id                    |                                              |                               |
-| sdwan_cluster                |                                              |                               |
-| sdwan_cluster_type           |                                              |                               |
-| sdwan_device_type            |                                              |                               |
-| sdwan_ec_applied             |                                              |                               |
-| sdwan_ec_session             |                                              |                               |
-| sdwan_fec_data               |                                              |                               |
-| sdwan_fec_ratio              |                                              |                               |
-| sdwan_impacted_link_rx_bytes |                            |                               |
-| sdwan_impacted_link_tx_bytes |                            |                               |
-| sdwan_impacted_session       |                            |                               |
-| sdwan_link                   |                            |                               |
-| sdwan_link_rx_bytes          |                            |                               |
-| sdwan_link_tag               |                            |                               |
-| sdwan_link_tx_bytes          |                            |                               |
-| sdwan_link_type              |                            |                               |
-| sdwan_pd_session             |                            |                               |
-| sdwan_phyintf                |                            |                               |
-| sdwan_session                |                            |                               |
-| sdwan_site                   |                            |                               |
-| serialnumber                 |                            |                               |
-| session_end_reason           |                            |                               |
-| session_owner                |                            |                               |
-| src_category                 |                            |                               |
-| src_host                     |                            |                               |
-| src_mac                      |                            |                               |
-| src_model                    |                            |                               |
-| src_osfamily                 |                            |                               |
-| src_osversion                |                            |                               |
-| src_profile                  |                            |                               |
-| src_vendor                   |                            |                               |
-| start                        |                            |                               |
-| tcp_retransit_cnt_c2s        |                            |                               |
-| tcp_retransit_cnt_s2c        |                            |                               |
-| tcp_rtt_c2s                  |                            |                               |
-| tcp_rtt_s2c                  |                            |                               |
-| tcp_zero_window_cnt_c2s      |                            |                               |
-| tcp_zero_window_cnt_s2c      |                            |                               |
-| total_n_ooseq_c2s            |                            |                               |
-| total_n_ooseq_s2c            |                            |                               |
-| traffic_flags                |                            |                               |
-| tunnelid                     |                            |                               |
-| xff_ip                       | X-Forwarded-For header     |                               |
+| Variable                     | Description                                          | Example Value                 |
+| ---------------------------- | ---------------------------------------------------- | ----------------------------- |
+| action_source                | Whether the allow/block comes from the app or policy | from-policy                   |
+| ai_fwd_error                 |                                                      |                               |
+| ai_traffic                   |                                                      |                               |
+| assoc_id                     | SCTP Association ID                                  |                               |
+| bytes                        | Total bytes in the session                           | 48120                         |
+| bytes_received               | Bytes in s2c direction                               | 6345                          |
+| bytes_sent                   | Bytes in c2s direction                               | 41775                         |
+| category                     | app category                                         | computer-and-internet-info    |
+| chunks                       | SCTP Chunks                                          |                               |
+| chunks_received              | SCTP Chunks Received                                 |                               |
+| chunks_sent                  | SCTP Chunks Sent                                     |                               |
+| dst_category                 | Device-ID: Category                                  |                               |
+| dst_host                     | Device-ID: Hostname                                  |                               |
+| dst_mac                      | Device-ID: MAC address                               |                               |
+| dst_model                    | Device-ID: Model                                     |                               |
+| dst_osfamily                 | Device-ID: OS family                                 |                               |
+| dst_osversion                | Device-ID: OS version                                |                               |
+| dst_profile                  | Device-ID: Profile                                   |                               |
+| dst_vendor                   | Device-ID: Vendor                                    |                               |
+| dynusergroup_name            | Dynamic user group of the user                       |                               |
+| elapsed                      | Elapsed time of the session                          |                               |
+| flow_type                    |                                                      |                               |
+| hostid                       |                                                      |                               |
+| http2_connection             | HTTP/2 session ID                                    |                               |
+| http2_connection_64          |                                                      |                               |
+| link_change_count            | Number of link flaps during the session              |                               |
+| link_switches                | Embedded details of up to four link flap entries     |                               |
+| monitortag                   |                                                      |                               |
+| ndpmatches                   |                                                      |                               |
+| nftrans                      |                                                      |                               |
+| nssai_sd                     | A Slice Differentiator (5G)                          |                               |
+| nssai_sst                    | A Slice Service Type (5G)                            |                               |
+| nthreats                     |                                                      |                               |
+| nurlcount                    |                                                      |                               |
+| offloaded                    | '1' if the traffic was offloaded                     |                               |
+| packets                      | Number of total packets for the session              | 65                            |
+| parent_session_id            | ID of the session in which this is tunnelled         |                               |
+| parent_session_id_64         |                                                      |                               |
+| parent_start_time            | Time parent tunnel session began                     |                               |
+| pkts_received                | Number of s2c packets                                | 26                            |
+| pkts_sent                    | Number of c2s packets                                | 39                            |
+| policy_id                    | Name of the SD-WAN policy                            |                               |
+| sdwan_cluster                | SD-WAN: Cluster name                                 |                               |
+| sdwan_cluster_type           | SD-WAN: Cluster type                                 |                               |
+| sdwan_device_type            | SD-WAN: Type of device                               |                               |
+| sdwan_ec_applied             |                                                      |                               |
+| sdwan_ec_session             |                                                      |                               |
+| sdwan_fec_data               |                                                      |                               |
+| sdwan_fec_ratio              |                                                      |                               |
+| sdwan_impacted_link_rx_bytes |                                                      |                               |
+| sdwan_impacted_link_tx_bytes |                                                      |                               |
+| sdwan_impacted_session       |                                                      |                               |
+| sdwan_link                   |                                                      |                               |
+| sdwan_link_rx_bytes          |                                                      |                               |
+| sdwan_link_tag               |                                                      |                               |
+| sdwan_link_tx_bytes          |                                                      |                               |
+| sdwan_link_type              |                                                      |                               |
+| sdwan_pd_session             |                                                      |                               |
+| sdwan_phyintf                |                                                      |                               |
+| sdwan_session                |                                                      |                               |
+| sdwan_site                   | SD-WAN: Name of the site                             |                               |
+| serialnumber                 | Serial number of the users device                    |                               |
+| session_end_reason           | The reason the session was terminated                | tcp-rst-from-client           |
+| session_owner                | The original HA peer session owner                   |                               |
+| src_category                 | Device-ID: Category                                  |                               |
+| src_host                     | Device-ID: Hostname                                  |                               |
+| src_mac                      | Device-ID: MAC address                               |                               |
+| src_model                    | Device-ID: Model                                     |                               |
+| src_osfamily                 | Device-ID: OS Family                                 |                               |
+| src_osversion                | Device-ID: OS Version                                |                               |
+| src_profile                  | Device-ID: Profile                                   |                               |
+| src_vendor                   | Device-ID: Vendor                                    |                               |
+| start                        | Time of the session start                            |                               |
+| tcp_retransit_cnt_c2s        |                                                      |                               |
+| tcp_retransit_cnt_s2c        |                                                      |                               |
+| tcp_rtt_c2s                  |                                                      |                               |
+| tcp_rtt_s2c                  |                                                      |                               |
+| tcp_zero_window_cnt_c2s      |                                                      |                               |
+| tcp_zero_window_cnt_s2c      |                                                      |                               |
+| total_n_ooseq_c2s            |                                                      |                               |
+| total_n_ooseq_s2c            |                                                      |                               |
+| traffic_flags                |                                                      |                               |
+| tunnelid                     | IMSI number (cellular)                               |                               |
+| xff_ip                       | X-Forwarded-For header                               |                               |
 
 
 
@@ -380,39 +380,37 @@ There are many fields which are common to all these types of alerts.
 ----
 ## Tunnel
 
-| Variable                | Description                                  | Example Value              |
-|-------------------------|----------------------------------------------|----------------------------|
-| action_source           |                                              |                            |
-| bytes                   |                                              |                            |
-| bytes_received          |                                              |                            |
-| bytes_sent              |                                              |                            |
-| category                | URL or wildfire verdict                      | computer-and-internet-info |
-| dynusergroup_name       |                                              |               |
-| elapsed                 |                                              |               |
-| max_encap               |                                              |               |
-| monitortag              |                                              |               |
-| nssai_sd                |                                              |               |
-| nssai_sst               |                                              |               |
-| packets                 |                                              |               |
-| parent_session_id       | ID of the session in which this is tunnelled |               |
-| parent_session_id_64    |                                              |               |
-| parent_start_time       | Time parent tunnel session began             |               |
-| pcap                    |                                              |               |
-| pcap_id                 | ID of the PCAP file                          |               |
-| pdu_session_id          |                                              |               |
-| pkts_received           |                                              |               |
-| pkts_sent               |                                              |               |
-| session_end_reason      |                                              |               |
-| sessions_closed         |                                              |               |
-| sessions_created        |                                              |               |
-| start                   |                                              |               |
-| strict_check            |                                              |               |
-| subcategory_of_app      |                                              |               |
-| traffic_flags           |                                              |               |
-| tunnel_fragment         |                                              |               |
-| tunnel_insp_rule        |                                              |               |
-| tunnelid                |                                              |               |
-| unknown_proto           |                                              |               |
+| Variable                | Description                                          | Example Value              |
+|-------------------------|------------------------------------------------------|----------------------------|
+| action_source           | Whether the allow/block comes from policy or the app |                            |
+| bytes                   | Total byte count                                     |                            |
+| bytes_received          | Bytes received (s2c)                                 |                            |
+| bytes_sent              | Bytes send (c2s)                                     |                            |
+| category                | URL or wildfire verdict                              | URL-Whitelist              |
+| dynusergroup_name       | The user's dynamic group                             |               |
+| elapsed                 | Session time                                         |               |
+| max_encap               | Packets dropped due to max encap levels exceeded     |               |
+| monitortag              |                                                      |               |
+| nssai_sd                | The A Slice Differentiator (5G)                      |               |
+| nssai_sst               | A Slice Service Type of the Network Slice ID (5G)    |               |
+| packets                 | Total packets sent/received                          |               |
+| parent_session_id       | ID of the session in which this is tunnelled         |               |
+| parent_session_id_64    |                                                      |               |
+| parent_start_time       | Time parent tunnel session began                     |               |
+| pcap_id                 | ID of the PCAP file                                  |               |
+| pdu_session_id          | Session ID for L4 segments inside a tunnel           |               |
+| pkts_received           |                                                      |               |
+| pkts_sent               |                                                      |               |
+| session_end_reason      | The reason a session terminated                      |               |
+| sessions_closed         | Number of completed/closed sessions created          |               |
+| sessions_created        | Number of inner sessions created                     |               |
+| start                   | Start time of the session                            |               |
+| strict_check            | packets dropped due to tunnel protocol header        |               |
+| traffic_flags           |                                                      |               |
+| tunnel_fragment         | Number of packets dropped because of fragmentation   |               |
+| tunnel_insp_rule        | Tunnel inspection rule matching cleartext traffic    |               |
+| tunnelid                | IMSI ID (cellular)                                   |               |
+| unknown_proto           | Packets dropped due to unknown protocol              |               |
 
 </br></br>
 
@@ -456,54 +454,53 @@ There are many fields which are common to all these types of alerts.
 ----
 ## Decryption
 
-| Variable                | Description            | Example Value |
-|-------------------------|------------------------|---------------|
-| cert_flags              |                        |               |
-| cert_serial             |                        |               |
-| cert_size               |                        |               |
-| cert_ver                |                        |               |
-| chain_status            |                        |               |
-| cn                      |                        |               |
-| cn_len                  |                        |               |
-| contentver              | App and Threats verion |               |
-| dst_category            |                        |               |
-| dst_host                |             |               |
-| dst_mac                 |             |               |
-| dst_model               |             |               |
-| dst_osfamily            |             |               |
-| dst_osversion           |             |               |
-| dst_profile             |             |               |
-| dst_vendor              |             |               |
-| ec_curve                |             |               |
-| err_index               |             |               |
-| error                   |             |               |
-| fingerprint             |             |               |
-| hs_stage_c2f            |             |               |
-| hs_stage_f2s            |             |               |
-| issuer_cn               |             |               |
-| issuer_len              |             |               |
-| notafter                |             |               |
-| notbefore               |             |               |
-| policy_name             |             |               |
-| proxy_type              |             |               |
-| root_cn                 |             |               |
-| root_status             |             |               |
-| rootcn_len              |             |               |
-| sni                     |             |               |
-| sni_len                 |             |               |
-| src_category            |             |               |
-| src_host                |             |               |
-| src_mac                 |             |               |
-| src_model               |             |               |
-| src_osfamily            |             |               |
-| src_osversion           |             |               |
-| src_profile             |             |               |
-| src_vendor              |             |               |
-| time_generated          |             |               |
-| tls_auth                |             |               |
-| tls_enc                 |             |               |
-| tls_keyxchg             |             |               |
-| tls_version             |             |               |
+| Variable                | Description                              | Example Value |
+|-------------------------|------------------------------------------|---------------|
+| cert_flags              | Flags containing cert information        |               |
+| cert_serial             | The unique identifier of the certificate |               |
+| cert_size               | The certificate key size                 |               |
+| cert_ver                | The certificate version                  |               |
+| chain_status            | Whether the chain is trusted             |               |
+| cn                      | Common Name                              |               |
+| cn_len                  | CN Length                                |               |
+| contentver              | App and Threats verion                   |               |
+| dst_category            | Device-ID: Category                      |               |
+| dst_host                | Device-ID: Hostname                      |               |
+| dst_mac                 | Device-ID: MAC address                   |               |
+| dst_model               | Device-ID: Model                         |               |
+| dst_osfamily            | Device-ID: OS family                     |               |
+| dst_osversion           | Device-ID: OS version                    |               |
+| dst_profile             | Device-ID: Profile                       |               |
+| dst_vendor              | Device-ID: Vendor                        |               |
+| ec_curve                | Elliptic Curve                           |               |
+| err_index               | The type of error that occurred          |               |
+| error                   | The error that has occurred in the event |               |
+| fingerprint             | Certificate fingerprint                  |               |
+| hs_stage_c2f            | Stage for Client to Firewall             |               |
+| hs_stage_f2s            | Stage for Firewall to Server             |               |
+| issuer_cn               | Issuer CN                                |               |
+| issuer_len              | Issuer CN length                         |               |
+| notafter                | Cert validity end                        |               |
+| notbefore               | Cert validity start                      |               |
+| policy_name             | The policy name that was encountered     |               |
+| proxy_type              | Decryption proxy type                    |               |
+| root_cn                 | CN of the root cert                      |               |
+| root_status             | Root cert status (trusted, etc)          |               |
+| rootcn_len              | Length of the root CN                    |               |
+| sni                     | Server Name Indication                   |               |
+| sni_len                 | SNI (hostname) length                    |               |
+| src_category            | Device-ID: Category                      |               |
+| src_host                | Device-ID: Hostname                      |               |
+| src_mac                 | Device-ID: MAC address                   |               |
+| src_model               | Device-ID: Model                         |               |
+| src_osfamily            | Device-ID: OS Family                     |               |
+| src_osversion           | Device-ID: OS Version                    |               |
+| src_profile             | Device-ID: Profile                       |               |
+| src_vendor              | Device-ID: Vendor                        |               |
+| tls_auth                | The authentication algorithm             |               |
+| tls_enc                 | The encryption algorithm                 |               |
+| tls_keyxchg             | The key exchange algorithm               |               |
+| tls_version             | The version of TLS protocol              |               |
 
 </br></br>
 

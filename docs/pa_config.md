@@ -144,6 +144,9 @@ However, these will make the payload much larger, so it's recommended not to use
 
 ## System
 
+Reports on global system events.
+</br></br>
+
 ```json
 {
     "alert": {
@@ -168,12 +171,237 @@ However, these will make the payload much larger, so it's recommended not to use
 ```
 </br></br>
 
-## Threat
+
+
+
+## User-ID
+
+Reports on anything related to User-ID, such as when a user is associated with an IP or port range.
+</br></br>
+
 
 ```json
 {
     "alert": {
         "source": "<SOURCE>",
+        "timestamp": "$time_generated"
+    },
+    "details": {
+        "type": "$type",
+        "subtype": "$subtype"
+    },
+    "device": {
+        "device_name": "$device_name",
+        "sender_sw_version": "$sender_sw_version",
+        "serial": "$serial"
+    },
+    "source": {
+        "type": "$datasource",
+        "name": "$datasourcename"
+    },
+    "client": {
+        "ip": "$ip",
+        "ntlm": "$user",
+        "upn": "$userbysource",
+        "tag_name": "$tag_name"
+    }
+}
+```
+</br></br>
+
+
+
+## Globalprotect
+
+Associated with Global Protect events (logon, logoff, failures, etc)
+</br></br>
+
+
+```json
+{
+    "alert": {
+        "source": "globalprotect",
+        "timestamp": "$time_generated"
+    },
+    "details": {
+        "type": "$type",
+        "subtype": "$subtype"
+    },
+    "device": {
+        "device_name": "$device_name",
+        "sender_sw_version": "$sender_sw_version",
+        "serial": "$serial"
+    },
+    "client": {
+        "srcuser": "$srcuser",
+        "os": "$client_os",
+        "os_ver": "$client_os_ver",
+        "host_name": "$machinename",
+        "host_serial": "$serialnumber",
+        "globalprotect_ver": "$client_ver",
+        "private_ip": "$private_ip",
+        "private_ipv6": "$private_ipv6",
+        "public_ip": "$public_ip",
+        "public_ipv6": "$public_ipv6",
+        "srcregion": "$srcregion",
+        "login_duration": "$login_duration",
+        "auth_method": "$auth_method"
+    },
+    "gateway_portal": {
+        "portal": "$portal",
+        "gateway": "$gateway",
+        "attempted_gateways": "$attempted_gateways",
+        "gateway_priority": "$priority",
+        "gateway_selection": "$selection_type",
+        "gateway_method": "$connect_method",
+        "location": "$location",
+        "tunnel_type": "$tunnel_type"
+    },
+    "event": {
+        "event_name": "$eventid",
+        "description": "$opaque",
+        "error": "$error",
+        "error_code": "$error_code",
+        "stage": "$stage",
+        "status": "$status",
+        "quarantine_reason": "$reason"
+    }
+}
+```
+</br></br>
+
+
+## Authentication
+
+Used with Authentication policies. Policies > Authentication > Edit Policy > Set Log Forwarding action.
+</br></br>
+
+
+```json
+{
+    "alert": {
+        "source": "<SOURCE>",
+        "timestamp": "$time_generated"
+    },
+    "details": {
+        "type": "$type",
+        "subtype": "$subtype"
+    },
+    "device": {
+        "device_name": "$device_name",
+        "sender_sw_version": "$sender_sw_version",
+        "serial": "$serial"
+    },
+    "client": {
+        "user": "$user",
+        "normalize_user": "$normalize_user",
+        "ip": "$ip",
+        "region": "$region",
+        "clienttype": "$clienttype"
+    },
+    "auth": {
+        "authpolicy": "$authpolicy",
+        "authproto": "$authproto",
+        "factorno": "$factorno",
+        "serverprofile": "$serverprofile",
+        "vendor": "$vendor"
+    },
+    "event": {
+        "desc": "$desc",
+        "event": "$event",
+        "object": "$object"
+    }
+}
+```
+</br></br>
+
+
+## Iptag
+
+Anything related to IP tagging.
+
+https://docs.paloaltonetworks.com/pan-os/10-2/pan-os-admin/policy/register-ip-addresses-and-tags-dynamically
+</br></br>
+
+
+```json
+{
+    "alert": {
+        "source": "<SOURCE>",
+        "timestamp": "$time_generated"
+    },
+    "details": {
+        "type": "$type",
+        "subtype": "$subtype"
+    },
+    "device": {
+        "device_name": "$device_name",
+        "sender_sw_version": "$sender_sw_version",
+        "serial": "$serial"
+    },
+    "tag": {
+        "name": "$tag_name",
+        "ip": "$ip",
+        "subnet_range": "$ip_subnet_range"
+    },
+    "event": {
+        "event_id": "$event_id",
+        "datasource_subtype": "$datasource_subtype",
+        "datasource_type": "$datasource_type",
+        "datasourcename": "$datasourcename"
+    }
+}
+```
+</br></br>
+
+
+## HIP Match
+
+```json
+{
+    "alert": {
+        "source": "<SOURCE>",
+        "timestamp": "$time_generated"
+    },
+    "details": {
+        "type": "$type",
+        "subtype": "$subtype"
+    },
+    "device": {
+        "device_name": "$device_name",
+        "sender_sw_version": "$sender_sw_version",
+        "serial": "$serial"
+    },
+    "host": {
+        "machinename": "$machinename",
+        "os": "$os",
+        "serialnumber": "$serialnumber",
+        "mac": "$mac",
+        "src": "$src",
+        "srcipv6": "$srcipv6"
+    },
+    "user": {
+        "srcuser": "$srcuser"
+    },
+    "match": {
+        "matchname": "$matchname",
+        "matchtype": "$matchtype"
+    }
+}
+```
+</br></br>
+
+
+## Threat
+
+Associated with security policies. Policies > Security > Edit a security policy > Set a log forwarding action.
+</br></br>
+
+
+```json
+{
+    "alert": {
+        "source": "threat",
         "timestamp": "$time_generated"
     },
     "details": {
@@ -242,78 +470,13 @@ However, these will make the payload much larger, so it's recommended not to use
 ```
 </br></br>
 
-## Traffic
-
-TBA
-
-```json
-{
-
-}
-```
-</br></br>
 
 ## URL
-
-TBA
-
-```json
-{
-
-}
-```
-</br></br>
-
-## Data
-
-TBA
-
-```json
-{
-
-}
-```
-</br></br>
-
-## WildFire
-
-TBA
-
-```json
-{
-
-}
-```
-</br></br>
-
-## Tunnel
-
-TBA
-
-```json
-{
-
-}
-```
-</br></br>
-
-## Authentication
-
-TBA
-
-```json
-{
-
-}
-```
-</br></br>
-
-## User-ID
 
 ```json
 {
     "alert": {
-        "source": "<SOURCE>",
+        "source": "url",
         "timestamp": "$time_generated"
     },
     "details": {
@@ -325,62 +488,424 @@ TBA
         "sender_sw_version": "$sender_sw_version",
         "serial": "$serial"
     },
-    "source": {
-        "type": "$datasource",
-        "name": "$datasourcename"
+    "tuple": {
+        "proto": "$proto",
+        "src": "$src",
+        "dst": "$dst",
+        "sport": "$sport",
+        "dport": "$dport"
     },
-    "client": {
-        "ip": "$ip",
-        "ntlm": "$user",
-        "upn": "$userbysource",
-        "tag_name": "$tag_name"
+    "match": {
+        "inbound_if": "$inbound_if",
+        "outbound_if": "$outbound_if",
+        "from_zone": "$from",
+        "to_zone": "$to",
+        "direction": "$direction",
+        "src_country": "$srcloc",
+        "dst_country": "$dstloc",
+        "src_user": "$srcuser",
+        "dst_user": "$dstuser",
+        "nat_src_ip": "$natsrc",
+        "nat_dst_ip": "$natdst",
+        "nat_sport": "$natsport",
+        "nat_dport": "$natdport"
+    },
+    "threat": {
+        "fw_rule": "$rule",
+        "id": "$threatid",
+        "name": "$threat_name",
+        "category": "$thr_category",
+        "severity": "$severity",
+        "action": "$action",
+        "reason": "$reason",
+        "justification": "$justification"
+    },
+    "app": {
+        "app": "$app",
+        "app_type": "$technology_of_app",
+        "sanctioned": "$sanctioned_state_of_app"
+    },
+    "tunnel": {
+        "tunnel": "$tunnel",
+        "tunneled_app": "$tunneled_app"
+    },
+    "edl": {
+        "src_edl": "$src_edl",
+        "dst_edl": "$dst_edl",
+        "domain_edl": "$domain_edl"
+    },
+    "content_filter": {
+        "filetype": "$filetype",
+        "filedigest": "$filedigest",
+        "category": "$category",
+        "xff": "$xff",
+        "misc": "$misc"
     }
 }
 ```
 </br></br>
 
 
-
-## HIP Match
-
-TBA
+## Data
 
 ```json
 {
-
+    "alert": {
+        "source": "data",
+        "timestamp": "$time_generated"
+    },
+    "details": {
+        "type": "$type",
+        "subtype": "$subtype"
+    },
+    "device": {
+        "device_name": "$device_name",
+        "sender_sw_version": "$sender_sw_version",
+        "serial": "$serial"
+    },
+    "tuple": {
+        "proto": "$proto",
+        "src": "$src",
+        "dst": "$dst",
+        "sport": "$sport",
+        "dport": "$dport"
+    },
+    "match": {
+        "inbound_if": "$inbound_if",
+        "outbound_if": "$outbound_if",
+        "from_zone": "$from",
+        "to_zone": "$to",
+        "direction": "$direction",
+        "src_country": "$srcloc",
+        "dst_country": "$dstloc",
+        "src_user": "$srcuser",
+        "dst_user": "$dstuser",
+        "nat_src_ip": "$natsrc",
+        "nat_dst_ip": "$natdst",
+        "nat_sport": "$natsport",
+        "nat_dport": "$natdport"
+    },
+    "threat": {
+        "fw_rule": "$rule",
+        "id": "$threatid",
+        "name": "$threat_name",
+        "category": "$thr_category",
+        "severity": "$severity",
+        "action": "$action",
+        "reason": "$reason",
+        "justification": "$justification"
+    },
+    "app": {
+        "app": "$app",
+        "app_type": "$technology_of_app",
+        "sanctioned": "$sanctioned_state_of_app"
+    },
+    "tunnel": {
+        "tunnel": "$tunnel",
+        "tunneled_app": "$tunneled_app"
+    },
+    "edl": {
+        "src_edl": "$src_edl",
+        "dst_edl": "$dst_edl",
+        "domain_edl": "$domain_edl"
+    },
+    "content_filter": {
+        "filetype": "$filetype",
+        "filedigest": "$filedigest",
+        "category": "$category",
+        "xff": "$xff",
+        "misc": "$misc"
+    }
 }
 ```
 </br></br>
 
-## Globalprotect
 
-TBA
+## WildFire
 
 ```json
 {
-
+    "alert": {
+        "source": "wildfire",
+        "timestamp": "$time_generated"
+    },
+    "details": {
+        "type": "$type",
+        "subtype": "$subtype"
+    },
+    "device": {
+        "device_name": "$device_name",
+        "sender_sw_version": "$sender_sw_version",
+        "serial": "$serial"
+    },
+    "tuple": {
+        "proto": "$proto",
+        "src": "$src",
+        "dst": "$dst",
+        "sport": "$sport",
+        "dport": "$dport"
+    },
+    "match": {
+        "inbound_if": "$inbound_if",
+        "outbound_if": "$outbound_if",
+        "from_zone": "$from",
+        "to_zone": "$to",
+        "direction": "$direction",
+        "src_country": "$srcloc",
+        "dst_country": "$dstloc",
+        "src_user": "$srcuser",
+        "dst_user": "$dstuser",
+        "nat_src_ip": "$natsrc",
+        "nat_dst_ip": "$natdst",
+        "nat_sport": "$natsport",
+        "nat_dport": "$natdport"
+    },
+    "threat": {
+        "fw_rule": "$rule",
+        "id": "$threatid",
+        "name": "$threat_name",
+        "category": "$thr_category",
+        "severity": "$severity",
+        "action": "$action",
+        "reason": "$reason",
+        "justification": "$justification"
+    },
+    "app": {
+        "app": "$app",
+        "app_type": "$technology_of_app",
+        "sanctioned": "$sanctioned_state_of_app"
+    },
+    "tunnel": {
+        "tunnel": "$tunnel",
+        "tunneled_app": "$tunneled_app"
+    },
+    "edl": {
+        "src_edl": "$src_edl",
+        "dst_edl": "$dst_edl",
+        "domain_edl": "$domain_edl"
+    },
+    "content_filter": {
+        "filetype": "$filetype",
+        "filedigest": "$filedigest",
+        "category": "$category",
+        "xff": "$xff",
+        "misc": "$misc"
+    }
 }
 ```
 </br></br>
 
-## Iptag
 
-TBA
+## Traffic
+
 
 ```json
 {
-
+    "alert": {
+        "source": "traffic",
+        "timestamp": "$time_generated"
+    },
+    "details": {
+        "type": "$type",
+        "subtype": "$subtype"
+    },
+    "device": {
+        "device_name": "$device_name",
+        "sender_sw_version": "$sender_sw_version",
+        "serial": "$serial"
+    },
+    "tuple": {
+        "proto": "$proto",
+        "src": "$src",
+        "dst": "$dst",
+        "sport": "$sport",
+        "dport": "$dport"
+    },
+    "match": {
+        "inbound_if": "$inbound_if",
+        "outbound_if": "$outbound_if",
+        "from_zone": "$from",
+        "to_zone": "$to",
+        "src_country": "$srcloc",
+        "dst_country": "$dstloc",
+        "src_user": "$srcuser",
+        "dst_user": "$dstuser"
+    },
+    "app": {
+        "app": "$app",
+        "category_of_app": "$category_of_app",
+        "sanctioned_state_of_app": "$sanctioned_state_of_app",
+        "technology_of_app": "$technology_of_app"
+    },
+    "counters": {
+        "bytes": "$bytes",
+        "bytes_received": "$bytes_received",
+        "bytes_sent": "$bytes_sent",
+        "packets": "$packets",
+        "pkts_received": "$pkts_received",
+        "pkts_sent": "$pkts_sent"
+    },
+    "session": {
+        "rule": "$rule",
+        "action": "$action",
+        "action_source": "$action_source",
+        "verdict": "$category",
+        "start": "$start",
+        "elapsed": "$elapsed",
+        "session_end_reason": "$session_end_reason",
+        "xff_ip": "$xff_ip",
+        "dst_edl": "$dst_edl",
+        "src_edl": "$src_edl"
+    },
+    "tunnel": {
+        "tunnel": "$tunnel",
+        "parent_session_id": "$parent_session_id",
+        "parent_start_time": "$parent_start_time",
+        "tunneled_app": "$tunneled_app"
+    }
 }
 ```
 </br></br>
+
+
+## Tunnel
+
+
+```json
+{
+    "alert": {
+        "source": "tunnel",
+        "timestamp": "$time_generated"
+    },
+    "details": {
+        "type": "$type",
+        "subtype": "$subtype"
+    },
+    "device": {
+        "device_name": "$device_name",
+        "sender_sw_version": "$sender_sw_version",
+        "serial": "$serial"
+    },
+    "tuple": {
+        "proto": "$proto",
+        "src": "$src",
+        "dst": "$dst",
+        "sport": "$sport",
+        "dport": "$dport"
+    },
+    "match": {
+        "inbound_if": "$inbound_if",
+        "outbound_if": "$outbound_if",
+        "from_zone": "$from",
+        "to_zone": "$to"
+    },
+    "app": {
+        "app": "$app",
+        "category_of_app": "$category_of_app",
+        "sanctioned_state_of_app": "$sanctioned_state_of_app",
+        "technology_of_app": "$technology_of_app"
+    },
+    "counters": {
+        "bytes": "$bytes",
+        "bytes_received": "$bytes_received",
+        "bytes_sent": "$bytes_sent",
+        "packets": "$packets",
+        "pkts_received": "$pkts_received",
+        "pkts_sent": "$pkts_sent"
+    },
+    "session": {
+        "rule": "$rule",
+        "action": "$action",
+        "action_source": "$action_source",
+        "verdict": "$category",
+        "start": "$start",
+        "elapsed": "$elapsed",
+        "session_end_reason": "$session_end_reason"
+    },
+    "tunnel": {
+        "tunnel": "$tunnel",
+        "start": "$start",
+        "parent_session_id": "$parent_session_id",
+        "parent_start_time": "$parent_start_time",
+        "sessions_closed": "$sessions_closed",
+        "sessions_created": "$sessions_created"
+    },
+    "drops": {
+        "max_encap": "$max_encap",
+        "strict_check": "$strict_check",
+        "tunnel_fragment": "$tunnel_fragment",
+        "tunnel_insp_rule": "$tunnel_insp_rule",
+        "unknown_proto": "$unknown_proto"
+    }
+}
+```
+</br></br>
+
 
 ## Decryption
 
-TBA
 
 ```json
 {
-
+    "alert": {
+        "source": "decryption",
+        "timestamp": "$time_generated"
+    },
+    "details": {
+        "type": "$type",
+        "subtype": "$subtype"
+    },
+    "device": {
+        "device_name": "$device_name",
+        "sender_sw_version": "$sender_sw_version",
+        "serial": "$serial"
+    },
+    "tuple": {
+        "proto": "$proto",
+        "src": "$src",
+        "dst": "$dst",
+        "sport": "$sport",
+        "dport": "$dport"
+    },
+    "match": {
+        "inbound_if": "$inbound_if",
+        "outbound_if": "$outbound_if",
+        "from_zone": "$from",
+        "to_zone": "$to"
+    },
+    "app": {
+        "app": "$app",
+        "category_of_app": "$category_of_app",
+        "sanctioned_state_of_app": "$sanctioned_state_of_app",
+        "technology_of_app": "$technology_of_app"
+    },
+    "certificate": {
+        "cn": "$cn",
+        "sni": "$sni",
+        "cert_serial": "$cert_serial",
+        "cert_size": "$cert_size",
+        "notafter": "$notafter",
+        "notbefore": "$notbefore",
+        "issuer_cn": "$issuer_cn",
+        "root_cn": "$root_cn",
+        "root_status": "$root_status",
+        "chain_status": "$chain_status"
+    },
+    "crypto": {
+        "ec_curve": "$ec_curve",
+        "tls_auth": "$tls_auth",
+        "tls_enc": "$tls_enc",
+        "tls_keyxchg": "$tls_keyxchg",
+        "tls_version": "$tls_version",
+        "hs_stage_c2f": "$hs_stage_c2f",
+        "hs_stage_f2s": "$hs_stage_f2s"
+    },
+    "event": {
+        "err_index": "$err_index",
+        "error": "$error",
+        "policy_name": "$policy_name",
+        "proxy_type": "$proxy_type"
+    }
 }
 ```
 </br></br>

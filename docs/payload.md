@@ -27,14 +27,7 @@ This page is for general log types, including:
 * Global Protect
 * IP Tag
 
-For other types, see **traffic_payloads.md**.
-</br></br>
-
-
-
-## Schema Overview:
-
-https://docs.paloaltonetworks.com/strata-logging-service/log-reference/log-forwarding-schema-overview
+For other types, see **traffic_payloads.md** and **threat_payloads.md**..
 </br></br>
 
 
@@ -227,9 +220,6 @@ Values can be:
 * chassis
 </br></br>
 
-https://docs.paloaltonetworks.com/strata-logging-service/log-reference/common-logs/common-system-log
-</br></br>
-
 https://docs.paloaltonetworks.com/pan-os/10-1/pan-os-admin/monitoring/use-syslog-for-monitoring/syslog-field-descriptions/system-log-fields
 </br></br>
 
@@ -237,38 +227,42 @@ https://docs.paloaltonetworks.com/pan-os/10-1/pan-os-admin/monitoring/use-syslog
 ----
 ## Authentication
 
-| Variable         | Description | Example Value |
-|------------------|-------------|---------------|
-| authid           |             |               |
-| authpolicy       |             |               |
-| authproto        |             |               |
-| clienttype       |             |               |
-| cluster_name     |             |               |
-| desc             |             |               |
-| event            |             |               |
-| factorno         |             |               |
-| ip               |             |               |
-| logset           |             |               |
-| normalize_user   |             |               |
-| object           |             |               |
-| region           |             |               |
-| repeatcnt        |             |               |
-| rule_uuid        |             |               |
-| serverprofile    |             |               |
-| sessionid        |             |               |
-| src_category     |             |               |
-| src_host         |             |               |
-| src_mac          |             |               |
-| src_model        |             |               |
-| src_osfamily     |             |               |
-| src_osversion    |             |               |
-| src_profile      |             |               |
-| src_vendor       |             |               |
-| user             |             |               |
-| user_agent       |             |               |
-| vendor           |             |               |
-
+| Variable         | Description                         | Example Value |
+|------------------|-------------------------------------|---------------|
+| authid           | Unique authentication ID            |               |
+| authpolicy       | Authentication policy               |               |
+| authproto        | Auth protocol on the server         |               |
+| clienttype       | Type of client used to authenticate |               |
+| cluster_name     |                                     |               |
+| desc             | Description (extra info)            |               |
+| event            | Result of auth attempt              |               |
+| factorno         | Primary or additional auth factors  |               |
+| ip               | Source IP                           |               |
+| logset           | Log forwarding profile              |               |
+| normalize_user   | Normalized version of username      |               |
+| object           | Object associated with the event    |               |
+| region           | Geo region                          |               |
+| repeatcnt        | Identical sessions within 5 seconds |               |
+| rule_uuid        | Identify the rule in use            |               |
+| serverprofile    | Authentication server               |               |
+| sessionid        |                                     |               |
+| src_category     | Device-ID: Category                 |               |
+| src_host         | Device-ID: Hostname                 |               |
+| src_mac          | Device-ID: MAC address              |               |
+| src_model        | Device-ID: Model                    |               |
+| src_osfamily     | Device-ID: OS Family                |               |
+| src_osversion    | Device-ID: OS Version               |               |
+| src_profile      | Device-ID: Profile                  |               |
+| src_vendor       | Device-ID: Vendor                   |               |
+| user             | The user being authenticated        |               |
+| user_agent       | User-Agent HTTP header              |               |
+| vendor           | Vendor providing MFA                |               |
 </br></br>
+
+
+https://docs.paloaltonetworks.com/pan-os/10-2/pan-os-admin/monitoring/use-syslog-for-monitoring/syslog-field-descriptions/authentication-log-fields
+</br></br>
+
 
 ```json
 {
@@ -363,24 +357,23 @@ https://docs.paloaltonetworks.com/pan-os/10-1/pan-os-admin/monitoring/use-syslog
 ----
 ## HIP Match
 
-| Variable     | Description | Example Value |
-|--------------|-------------|---------------|
-| cluster_name |             |               |
-| hostid       |             |               |
-| mac          |             |               |
-| machinename  |             |               |
-| matchname    |             |               |
-| matchtype    |             |               |
-| os           |             |               |
-| reclassified |             |               |
-| repeatcnt    |             |               |
-| serialnumber |             |               |
-| src          |             |               |
-| srcipv6      |             |               |
-| srcuser      |             |               |
-| subtype      |             |               |
-
+| Variable     | Description                           | Example Value |
+|--------------|---------------------------------------|---------------|
+| cluster_name |                                       |               |
+| hostid       | ID Global Protect assigns to the host |               |
+| mac          | User machine's MAC                    |               |
+| machinename  | Hostname of the machine               |               |
+| matchname    | HIP object/profile                    |               |
+| matchtype    | HIP field or HIP object               |               |
+| os           | Host operating system                 |               |
+| reclassified |                                       |               |
+| repeatcnt    | Times the HIP profile is matched      |               |
+| serialnumber | Serial number of the user's machine   |               |
+| src          | IP of the source user                 |               |
+| srcipv6      | IP of the source user                 |               |
+| srcuser      | User initiating the session           |               |
 </br></br>
+
 
 ```json
 {
@@ -397,7 +390,6 @@ https://docs.paloaltonetworks.com/pan-os/10-1/pan-os-admin/monitoring/use-syslog
     "src": "$src",
     "srcipv6": "$srcipv6",
     "srcuser": "$srcuser",
-    "subtype": "$subtype"
 }
 ```
 </br></br>
@@ -405,41 +397,45 @@ https://docs.paloaltonetworks.com/pan-os/10-1/pan-os-admin/monitoring/use-syslog
 ----
 ## Globalprotect
 
-| Variable           | Description | Example Value |
-|--------------------|-------------|---------------|
-| attempted_gateways |             |               |
-| auth_method        |             |               |
-| client_os          |             |               |
-| client_os_ver      |             |               |
-| client_ver         |             |               |
-| cluster_name       |             |               |
-| connect_method     |             |               |
-| error              |             |               |
-| error_code         |             |               |
-| eventid            |             |               |
-| gateway            |             |               |
-| hostid             |             |               |
-| location           |             |               |
-| login_duration     |             |               |
-| machinename        |             |               |
-| opaque             |             |               |
-| portal             |             |               |
-| priority           |             |               |
-| private_ip         |             |               |
-| private_ipv6       |             |               |
-| project_name       |             |               |
-| public_ip          |             |               |
-| public_ipv6        |             |               |
-| reason             |             |               |
-| repeatcnt          |             |               |
-| response_time      |             |               |
-| selection_type     |             |               |
-| serialnumber       |             |               |
-| srcregion          |             |               |
-| srcuser            |             |               |
-| stage              |             |               |
-| status             |             |               |
-| tunnel_type        |             |               |
+https://docs.paloaltonetworks.com/pan-os/10-2/pan-os-admin/monitoring/use-syslog-for-monitoring/syslog-field-descriptions/globalprotect-log-fields
+</br></br>
+
+
+| Variable           | Description                                                        | Example Value |
+|--------------------|--------------------------------------------------------------------|---------------|
+| attempted_gateways | Gateways that were available and attempted for the client location |               |
+| auth_method        | auth method used for the connection                                | saml                              |
+| client_os          | Client's OS                                                        | Windows                           |
+| client_os_ver      | Version of client's OS                                             | Microsoft Windows 11 Pro , 64-bit |
+| client_ver         | Global protect version                                             | 6.3.3                             |
+| cluster_name       |                                                                    |                                   |
+| connect_method     | How the GlobalProtect app connected to the the Gateway             | user-logon                        |
+| error              | Error information for an unsuccessful connection                   |               |
+| error_code         | A code assigned to the error                                       |               |
+| eventid            | The name of the event                                              | portal-prelogin                   |
+| gateway            | The name of the gateway in the portal config                       |               |
+| hostid             | A unique ID assigned to the host                                   |               |
+| location           | Location of the portal or gateway                                  |               |
+| login_duration     | Total duration of the session                                      |               |
+| machinename        | Hostname of the user's machine                                     | PC-001                            |
+| opaque             | Additional information (description)                               | SAML request sent                 |
+| portal             | The name of the portal/gateway                                     | GP_Portal                         |
+| priority           | The priority order of the gateway                                  |               |
+| private_ip         | Client's private IP                                                |               |
+| private_ipv6       | Client's private IP                                                |               |
+| project_name       |                                                                    |               |
+| public_ip          | Client's public IP                                                 | 1.2.3.4                           |
+| public_ipv6        | Client's public IP                                                 |               |
+| reason             | The reason for quarantine                                          |               |
+| repeatcnt          | Number of identical sessions in the last 5 seconds                 |               |
+| response_time      | SSL response time (in ms)                                          |               |
+| selection_type     | The method of selecting the gateway                                |               |
+| serialnumber       | Serial number of the client device                                 | 2ZM3V04                           |
+| srcregion          | The region for the source user                                     | AU                                |
+| srcuser            | The user who initiated the session                                 | user@domain                       |
+| stage              | The stage of the connection                                        | before-login                      |
+| status             | Success or failure                                                 | success                           |
+| tunnel_type        | SSLVPN or IPSec tunnel                                             |               |
 
 </br></br>
 
@@ -485,20 +481,20 @@ https://docs.paloaltonetworks.com/pan-os/10-1/pan-os-admin/monitoring/use-syslog
 ----
 ## Iptag
 
-| Variable           | Description | Example Value |
-|--------------------|-------------|---------------|
-| cluster_name       |             |               |
-| datasource_subtype |             |               |
-| datasource_type    |             |               |
-| datasourcename     |             |               |
-| event_id           |             |               |
-| ip                 |             |               |
-| ip_subnet_range    |             |               |
-| repeatcnt          |             |               |
-| tag_name           |             |               |
-| timeout            |             |               |
-
+| Variable           | Description                           | Example Value |
+|--------------------|---------------------------------------|---------------|
+| cluster_name       |                                       |               |
+| datasource_subtype | Mechanism used to map IPs to tags     |               |
+| datasource_type    | The type of source                    |               |
+| datasourcename     | The source of the mapping information |               |
+| event_id           | The name of the event                 |               |
+| ip                 | IP address being mapped               |               |
+| ip_subnet_range    | IP range being mapped                 |               |
+| repeatcnt          | Identical sessions within 5 seconds   |               |
+| tag_name           | The tag mapped to the source IP       |               |
+| timeout            | Time before IP-Tag mapping expires    |               |
 </br></br>
+
 
 ```json
 {
