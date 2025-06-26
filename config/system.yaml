@@ -4,11 +4,110 @@
 # - description: A short description of the event. This is used for documentation purposes.
 # - message: A message template that will be used to format the event message.
 # - teams: Optional message template for Microsoft Teams notifications. If not provided, the other message will be used.
+#
+# General subtypes use the 'module' field to provide additional context.
+#   Here, the module is appended to 'general', eg, general_upgrade, general_auth, etc.
 
 
-general:
+general_general:
   description: ""
-  message: "General event detected: {self.event}"
+  message: "{self.device_name} has detected a general event: {self.description}"
+
+general_management:
+  description: ""
+  message: "General management event detected: {self.event}"
+
+general_auth:
+  description: ""
+  message: "General auth event detected: {self.event}"
+
+general_ha:
+  description: ""
+  message: "General ha event detected: {self.event}"
+
+general_upgrade:
+  description: ""
+  message: "General upgrade event detected: {self.event}"
+
+general_chassis:
+  description: ""
+  message: "General chassis event detected: {self.event}"
+
+crypto:
+  description: ""
+  message: "System/Crypto event: {self.event}"
+
+dhcp:
+  description: ""
+  message: "System/dhcp event: {self.event}"
+
+dnsproxy:
+  description: ""
+  message: "System/dnsproxy event: {self.event}"
+
+dos:
+  description: ""
+  message: "System/dos event: {self.event}"
+
+global-protect:
+  description: ""
+  message: "System/Global Protect event: {self.event}"
+
+ha:
+  description: ""
+  message: "System/HA event: {self.event}"
+
+hw:
+  description: ""
+  message: "System/Hardware event: {self.event}"
+
+nat:
+  description: ""
+  message: "System/NAT event: {self.event}"
+
+ntpd:
+  description: ""
+  message: "System/NTP event: {self.event}"
+
+pbf:
+  description: ""
+  message: "System/PBF event: {self.event}"
+
+port:
+  description: ""
+  message: "System/Port event: {self.event}"
+
+pppoe:
+  description: ""
+  message: "System/pppoe event: {self.event}"
+
+ras:
+  description: ""
+  message: "System/RAS event: {self.event}"
+
+routing:
+  description: ""
+  message: "System/Routing event: {self.event}"
+
+satd:
+  description: ""
+  message: "System/satd event: {self.event}"
+
+sslmgr:
+  description: ""
+  message: "System/SSL Manager event: {self.event}"
+
+sslvpn:
+  description: ""
+  message: "System/SSL VPN event: {self.event}"
+
+url-filtering:
+  description: ""
+  message: "System/URL Filter event: {self.event}"
+
+vpn:
+  description: ""
+  message: "System/VPN event: {self.event}"
 
 userid:
   description: "An alert for the User-ID system. This is not about users themselves."

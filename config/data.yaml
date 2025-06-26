@@ -5,6 +5,21 @@
 # - message: A message template that will be used to format the event message.
 # - teams: Optional message template for Microsoft Teams notifications. If not provided, the other message will be used.
 
+data:
+  description: ""
+  message: "Data/Data Filtering: {self.event}"
+
+dlp:
+  description: ""
+  message: "Data/DLP: {self.event}"
+
+dlp-non-file:
+  description: ""
+  message: "Data/DLP non file: {self.event}"
+
+file:
+  description: ""
+  message: "Data/File: {self.event}"
 
 default:
   description: "A default event for firewall webhooks."

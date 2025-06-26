@@ -6,9 +6,21 @@
 # - teams: Optional message template for Microsoft Teams notifications. If not provided, the other message will be used.
 
 
-wildfire:
+malware:
   description: ""
-  message: "Wildfire event detected: {self.event}"
+  message: "Wildfire says {self.security_match_srcuser} transferred malware ({self.security_tuple_src} to {self.security_tuple_dst}) using {self.security_app}. {self.device_name} decided to {self.security_threat_action} the file."
+
+phishing:
+  description: ""
+  message: "Wildfire/Phishing: {self.event}"
+
+grayware:
+  description: ""
+  message: "Wildfire/Grayware: {self.event}"
+
+benign:
+  description: ""
+  message: "Wildfire says {self.security_match_srcuser} transferred a benign file ({self.security_tuple_src} to {self.security_tuple_dst}) using {self.security_app}. {self.device_name} decided to {self.security_threat_action} the file."
 
 default:
   description: "A default event for firewall webhooks."

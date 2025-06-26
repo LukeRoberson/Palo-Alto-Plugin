@@ -192,6 +192,10 @@ class EventHandler:
         self.description = self.event.get("details", {}).get("description")
         self.object = self.event.get("details", {}).get("object")
 
+        # General events use the module name
+        if self.event_subtype == "general":
+            self.event_subtype = f"general_{self.module}"
+
     def _userid_events(
         self,
     ) -> None:
@@ -301,6 +305,9 @@ class EventHandler:
             self.event.get("event", {}).get("quarantine_reason")
         )
 
+        # Subtype is not used, so remap the event ID to the subtype
+        self.event_subtype = self.gp_event_name
+
     def _auth_events(
         self,
     ) -> None:
@@ -350,6 +357,10 @@ class EventHandler:
             self.event.get("event", {}).get("datasource_name")
         )
 
+        # Subtype is not used for IP-Tag events,
+        #   so remap the event ID to the subtype
+        self.event_subtype = self.iptag_event_id
+
     def _hip_events(
         self,
     ) -> None:
@@ -370,6 +381,9 @@ class EventHandler:
 
         self.hip_match_name = self.event.get("match", {}).get("matchname")
         self.hip_match_type = self.event.get("match", {}).get("matchtype")
+
+        # Subtypes not used for HIP events
+        self.event_subtype = "hip_match"
 
     def _security_events(
         self,
@@ -476,6 +490,11 @@ class EventHandler:
         self.security_content_misc = (
             self.event.get("content_filter", {}).get("misc")
         )
+
+        # Subtype for URL and WildFire is effectively unused
+        #   so remap the category to the subtype
+        if self.source == "url" or self.source == "wildfire":
+            self.event_subtype = self.security_content_category
 
     def _traffic_events(
         self,
@@ -825,6 +844,10 @@ class EventHandler:
         self.decryption_event_proxytype = (
             self.event.get("event", {}).get("proxy_type")
         )
+
+        # subtype is not used for Decryption events,
+        #   so remap the error index to the subtype
+        self.event_subtype = self.decryption_event_errindex
 
     def _extract_fields(
         self,

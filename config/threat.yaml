@@ -7,8 +7,53 @@
 
 
 virus:
+  description: "Virus detected via an Antivirus profile"
+  message: "{self.security_match_srcuser} tried to access a file named {self.security_content_misc} ({self.security_tuple_src} to {self.security_tuple_dst}) using {self.security_app}. {self.device_name} wasn't having any of that, and decided {self.security_threat_action} was the best action for the connection."
+
+data:
+  description: "Data pattern matching a Data Filtering profile"
+  message: "Threat/Data Filtering: {self.event}"
+
+file:
+  description: "File type matching a File Blocking profile"
+  message: "Threat/File Blocking: {self.event}"
+
+flood:
+  description: "Flood detected via a Zone Protection profile"
+  message: "Threat/Flooding: {self.event}"
+
+packet:
+  description: "Packet-based attack protection triggered by a Zone Protection profile"
+  message: "Threat/Packet Attack: {self.event}"
+
+scan:
+  description: "Scan detected via a Zone Protection profile"
+  message: "Threat/Scan: {self.event}"
+
+spyware:
+  description: "Spyware detected via an Anti-Spyware profile"
+  message: "Threat/Spyware: {self.event}"
+
+url:
+  description: "URL filtering log"
+  message: "Threat/URL: {self.event}"
+
+ml-virus:
+  description: "Virus detected by WildFire Inline ML via an Antivirus profile"
+  message: "Threat/ML Virus: {self.event}"
+
+vulnerability:
+  description: "Vulnerability exploit detected via a Vulnerability Protection profile"
+  message: "Threat/Exploit: {self.event}"
+
+wildfire:
+  description: "A WildFire verdict generated when the firewall submits a file to WildFire per a WildFire Analysis profile and a verdict (malware, phishing, grayware, or benign, depending on what you are logging) is logged in the WildFire Submissions log"
+  message: "Threat/Wildfire: {self.event}"
+
+wildfire-virus:
   description: ""
-  message: "Virus event detected: {self.event}"
+  message: "Threat/Wildfire Virus: {self.event}"
+
 
 default:
   description: "A default event for firewall webhooks."

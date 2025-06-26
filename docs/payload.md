@@ -83,36 +83,6 @@ These fields are available to all log types:
 ```
 </br></br>
 
-Subtypes (daemons) for a system log:
-* crypto
-* dhcp
-* dnsproxy
-* dos
-* general
-* global-protect
-* ha
-* hw
-* nat
-* ntpd
-* pbf
-* port
-* pppoe
-* ras
-* routing
-* satd
-* sslmgr
-* sslvpn
-* userid
-* url-filtering
-* vpn
-
-For other log types, _subtype_ will be the content type or threat type.
-</br></br>
-
-
-https://docs.paloaltonetworks.com/strata-logging-service/log-reference/common-logs/common-system-log/common-system-https-fields#common-system-https_common-system-device_group.value-https
-</br></br>
-
 
 
 # Unique Fields
@@ -212,6 +182,35 @@ Notes:
 ```
 </br></br>
 
+Subtypes for a system log:
+* crypto
+* dhcp
+* dnsproxy
+* dos
+* general
+* global-protect
+* ha
+* hw
+* nat
+* ntpd
+* pbf
+* port
+* pppoe
+* ras
+* routing
+* satd
+* sslmgr
+* sslvpn
+* userid
+* url-filtering
+* vpn
+</br></br>
+
+In addition to the documented types above, these have been observed:
+* lacp
+</br></br>
+
+
 The _module_ field is used when the subtype is set to _general_. It provides more information about the sub-system that generates the log.
 
 Values can be:
@@ -223,7 +222,7 @@ Values can be:
 * chassis
 </br></br>
 
-https://docs.paloaltonetworks.com/pan-os/10-1/pan-os-admin/monitoring/use-syslog-for-monitoring/syslog-field-descriptions/system-log-fields
+https://docs.paloaltonetworks.com/pan-os/11-1/pan-os-admin/monitoring/use-syslog-for-monitoring/syslog-field-descriptions/system-log-fields
 </br></br>
 
 
@@ -353,12 +352,29 @@ https://docs.paloaltonetworks.com/pan-os/10-2/pan-os-admin/monitoring/use-syslog
 ```
 </br></br>
 
-https://docs.paloaltonetworks.com/pan-os/10-1/pan-os-admin/monitoring/use-syslog-for-monitoring/syslog-field-descriptions/user-id-log-fields
+**Subtypes** can be:
+* login - User logged in.
+* logout - User logged out.
+* register-tag - Indicates a tag or tags were registered for the user.
+* unregister-tag - Indicates a tag or tags were unregistered for the user.
+</br></br>
+
+
+**ugflags** can be:
+* User Group Found - Indicates whether the user could be mapped to a group.
+* Duplicate User - Indicates whether duplicate users were found in a user group. Displays N/A if no user group is found.
+
+
+https://docs.paloaltonetworks.com/pan-os/11-1/pan-os-admin/monitoring/use-syslog-for-monitoring/syslog-field-descriptions/user-id-log-fields
 </br></br>
 
 
 ----
 ## HIP Match
+
+Note: The _subtype_ field is unused for a HIP match.
+</br></br>
+
 
 | Variable     | Description                           | Example Value |
 |--------------|---------------------------------------|---------------|
@@ -480,6 +496,70 @@ https://docs.paloaltonetworks.com/pan-os/10-2/pan-os-admin/monitoring/use-syslog
 }
 ```
 </br></br>
+
+**Subtypes** aren't used in the Global Protect log type. It is better to use **eventid**. These events are below
+
+Portal events:
+* portal-auth - Indicates a GlobalProtect portal authentication stage
+* portal-gen-cookie - Indicates a GlobalProtect portal authentication override cookie generation event
+* portal-getconfig - Indicates a GlobalProtect portal event for generating GlobalProtect client configuration, such as dynamic app configuration or gateway list.
+* portal-prelogin - Indicates a GlobalProtect portal pre-login event: Checks certificate, generates SAML request, triggers kerberos authentication
+
+Gateway events:
+* gateway-agent-msg - Indicates a GlobalProtect gateway event for a message received from the GlobalProtect client, such as GlobalProtect client disable reason message.
+* gateway-auth - Indicates GlobalProtect gateway authentication stage.
+* gateway-config-release - Indicates a GlobalProtect gateway event for configuration release, such as remove ip-user mapping or remove tunnel.
+* gateway-connected - Indicates a GlobalProtect gateway event for a GlobalProtect client successful connection for tunnel or non-tunnel mode.
+* gateway-framed-ip - Indicates a GlobalProtect gateway event where the gateway retrieved a framed IPv4 address from RADIUS for a GlobalProtect client.
+* gateway-getconfig - Indicates a GlobalProtect gateway event for generating GlobalProtect client configuration, such as split-tunnel, virtual IP, or tunnel information.
+* gateway-hip-check - Confirm whether a GlobalProtect HIP report was updated or not, and to refresh ip-user mapping
+* gateway-hip-report - Confirm whether a HIP report was received from a GlobalProtect client, to update ip-user mapping, and to enforce HIP policy
+* gateway-inheritance - GlobalProtect gateway is using a dynamic IP address and the IP address changed.
+* gateway-logout - Client logout
+* gateway-prelogin - Indicates a GlobalProtect gateway pre-login event: Checks certificate, generates SAML request, triggers kerberos authentication
+* gateway-register - Indicates GlobalProtect client user information, such as username, domain-name, computer name, hostid, serial number, public ip, or login time is added on the gateway.
+* gateway-setup-ipsec - Indicates a GlobalProtect gateway event for setting up an IPSec VPN tunnel.
+* gateway-setup-ssl - Indicates a GlobalProtect gateway event for setting up a SSL VPN tunnel.
+* gateway-switch-to-ssl - Indicates a GlobalProtect gateway tunnel switch from IPSec to SSL considering IPSec tunnel was not successful.
+* gateway-tunnel-latency - GlobalProtect gateway latency provided by a GlobalProtect client
+* quarantine-add - The client is added to the quarantine list
+* quarantine-delete - The client is removed from the quarantine list
+
+Clientless VPN events:
+* clientlessvpn-login - Portal event for GlobalProtect Clientless VPN login
+* clientlessvpn-logout - Portal event for GlobalProtect Clientless VPN logout
+* clientlessvpn-prelogin - Indicates a GlobalProtect portal pre-login event: Checks certificate, generates SAML request, triggers kerberos authentication
+
+https://docs.paloaltonetworks.com/globalprotect/10-1/globalprotect-admin/logging-for-globalprotect-in-pan-os/event-descriptions-for-the-globalprotect-logs-in-pan-os
+</br></br>
+
+
+The **stage** field indicates the stage of the connection. This can be:
+* before-login
+* login
+* tunnel
+</br></br>
+
+
+The **auth_method** field shows the authentication type, which can be:
+* LDAP
+* RADIUS
+* SAML
+</br></br>
+
+
+The **connect_method** field shows how the app connects to the gateway. These can be:
+* on-demand
+* user-login
+</br></br>
+
+
+**selection_type** is how the gateway was selected:
+* manual - The gateway to which you want the GlobalProtect app to manually connect.
+* preferred - The preferred gateway to which you want the GlobalProtect app to connect.
+* auto - Automatically connect to the Best Available gateway based on the priority assigned to the gateway and the response time.
+
+
 
 ----
 ## Iptag

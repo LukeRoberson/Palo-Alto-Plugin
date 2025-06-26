@@ -6,6 +6,84 @@
 # - teams: Optional message template for Microsoft Teams notifications. If not provided, the other message will be used.
 
 
+portal-auth:
+  description: "GlobalProtect portal authentication stage"
+  message: "GP Portal: {self.event}"
+portal-gen-cookie:
+  description: "GlobalProtect portal authentication override cookie generation event"
+  message: "GP Portal: {self.event}"
+portal-getconfig:
+  description: "GlobalProtect portal event for generating GlobalProtect client configuration, such as dynamic app configuration or gateway list"
+  message: "GP Portal: {self.event}"
+portal-prelogin:
+  description: "GlobalProtect portal pre-login event: Checks certificate, generates SAML request, triggers kerberos authentication"
+  message: "GP Portal: {self.event}"
+
+gateway-agent-msg:
+  description: "GlobalProtect gateway event for a message received from the GlobalProtect client, such as GlobalProtect client disable reason message"
+  message: "GP Gateway: {self.event}"
+gateway-auth:
+  description: "Indicates GlobalProtect gateway authentication stage"
+  message: "GP Gateway: {self.event}"
+gateway-config-release:
+  description: "Indicates a GlobalProtect gateway event for configuration release, such as remove ip-user mapping or remove tunnel"
+  message: "GP Gateway: {self.event}"
+gateway-connected:
+  description: "Indicates a GlobalProtect gateway event for a GlobalProtect client successful connection for tunnel or non-tunnel mode"
+  message: "GP Gateway: {self.event}"
+gateway-framed-ip:
+  description: "Indicates a GlobalProtect gateway event where the gateway retrieved a framed IPv4 address from RADIUS for a GlobalProtect client"
+  message: "GP Gateway: {self.event}"
+gateway-getconfig:
+  description: "Indicates a GlobalProtect gateway event for generating GlobalProtect client configuration, such as split-tunnel, virtual IP, or tunnel information"
+  message: "GP Gateway: {self.event}"
+gateway-hip-check:
+  description: "Confirm whether a GlobalProtect HIP report was updated or not, and to refresh ip-user mapping"
+  message: "GP Gateway: {self.event}"
+gateway-hip-report:
+  description: "Confirm whether a HIP report was received from a GlobalProtect client, to update ip-user mapping, and to enforce HIP policy"
+  message: "GP Gateway: {self.event}"
+gateway-inheritance:
+  description: "GlobalProtect gateway is using a dynamic IP address and the IP address changed"
+  message: "GP Gateway: {self.event}"
+gateway-logout:
+  description: "Client logout"
+  message: "GP Gateway: {self.event}"
+gateway-prelogin:
+  description: "Indicates a GlobalProtect gateway pre-login event: Checks certificate, generates SAML request, triggers kerberos authentication"
+  message: "GP Gateway: {self.event}"
+gateway-register:
+  description: "Indicates GlobalProtect client user information, such as username, domain-name, computer name, hostid, serial number, public ip, or login time is added on the gateway"
+  message: "GP Gateway: {self.event}"
+gateway-setup-ipsec:
+  description: "Indicates a GlobalProtect gateway event for setting up an IPSec VPN tunnel"
+  message: "GP Gateway: {self.event}"
+gateway-setup-ssl:
+  description: "Indicates a GlobalProtect gateway event for setting up a SSL VPN tunnel"
+  message: "GP Gateway: {self.event}"
+gateway-switch-to-ssl:
+  description: "Indicates a GlobalProtect gateway tunnel switch from IPSec to SSL considering IPSec tunnel was not successful"
+  message: "GP Gateway: {self.event}"
+gateway-tunnel-latency:
+  description: "GlobalProtect gateway latency provided by a GlobalProtect client"
+  message: "GP Gateway: {self.event}"
+quarantine-add:
+  description: "The client is added to the quarantine list"
+  message: "GP Gateway: {self.event}"
+quarantine-delete:
+  description: "The client is removed from the quarantine list"
+  message: "GP Gateway: {self.event}"
+
+clientlessvpn-login:
+  description: "Portal event for GlobalProtect Clientless VPN login"
+  message: "GP Clientless VPN: {self.event}"
+clientlessvpn-logout:
+  description: "Portal event for GlobalProtect Clientless VPN logout"
+  message: "GP Clientless VPN: {self.event}"
+clientlessvpn-prelogin:
+  description: "Indicates a GlobalProtect portal pre-login event: Checks certificate, generates SAML request, triggers kerberos authentication"
+  message: "GP Clientless VPN: {self.event}"
+
 default:
   description: "A default event for firewall webhooks."
   message: "An unknown event has been received from a firewall."

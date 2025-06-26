@@ -469,3 +469,29 @@ Actions can be:
 * block (Wildfire only) - file was blocked by the firewall and uploaded to Wildfire
 </br></br>
 
+
+## Subtypes
+
+Subtypes of a **threat** log can be:
+* data - Data pattern matching a Data Filtering profile.
+* file - File type matching a File Blocking profile.
+* flood - Flood detected via a Zone Protection profile.
+* packet - Packet-based attack protection triggered by a Zone Protection profile.
+* scan - Scan detected via a Zone Protection profile.
+* spyware - Spyware detected via an Anti-Spyware profile.
+* url - URL filtering log.
+* ml-virus - Virus detected by WildFire Inline ML via an Antivirus profile.
+* virus - Virus detected via an Antivirus profile.
+* vulnerability - Vulnerability exploit detected via a Vulnerability Protection profile.
+* wildfire - A WildFire verdict generated when the firewall submits a file to WildFire per a WildFire Analysis profile and a verdict (malware, phishing, grayware, or benign, depending on what you are logging) is logged in the WildFire Submissions log.
+* wildfire-virus
+</br></br>
+
+The **URL** type will always have a subtype of _url_.
+
+Subtypes of a **data** log can be:
+* data
+* dlp
+* dlp-non-file
+* file
+

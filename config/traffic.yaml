@@ -6,6 +6,22 @@
 # - teams: Optional message template for Microsoft Teams notifications. If not provided, the other message will be used.
 
 
+Start:
+  description: "Session has started"
+  message: "Session started: {self.event}"
+
+End:
+  description: "Session has ended"
+  message: "Session ended: {self.event}"
+
+Drop:
+  description: "A session has been dropped"
+  message: "Session dropped: {self.event}"
+
+Deny:
+  description: "A session has been denied"
+  message: "Session denied: {self.event}"
+
 default:
   description: "A default event for firewall webhooks."
   message: "An unknown event has been received from a firewall."

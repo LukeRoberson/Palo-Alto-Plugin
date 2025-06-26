@@ -6,6 +6,22 @@
 # - teams: Optional message template for Microsoft Teams notifications. If not provided, the other message will be used.
 
 
+login:
+  description: "User logged in"
+  message: "User logged in: {self.event}"
+
+logout:
+  description: "User logged out"
+  message: "User logged out: {self.event}"
+
+register-tag:
+  description: "Indicates a tag or tags were registered for the user."
+  message: "Tag registered for user: {self.event}"
+
+unregister-tag:
+  description: "Indicates a tag or tags were unregistered for the user."
+  message: "Tag unregistered for user: {self.event}"
+
 default:
   description: "A default event for firewall webhooks."
   message: "An unknown event has been received from a firewall."

@@ -559,3 +559,29 @@ There are many fields which are common to all these types of alerts.
 ```
 </br></br>
 
+
+----
+# Field Values
+## Subtypes
+
+**Traffic** subtypes can be:
+
+* Start - session started
+* End - session ended
+* Drop - session dropped before the application is identified and there is no rule that allows the session.
+* Deny - session dropped after the application is identified and there is a rule to block or no rule that allows the session.
+
+</br></br>
+
+
+## Actions
+
+The _action_ field in a **Traffic** log can be:
+
+* allow - session was allowed by policy
+* deny - session was denied by policy
+* drop - session was dropped silently
+* drop ICMP - session was silently dropped with an ICMP unreachable message to the host or application
+* reset both - session was terminated and a TCP reset is sent to both the sides of the connection
+* reset client - session was terminated and a TCP reset is sent to the client
+* reset server - session was terminated and a TCP reset is sent to the server

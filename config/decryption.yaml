@@ -6,6 +6,38 @@
 # - teams: Optional message template for Microsoft Teams notifications. If not provided, the other message will be used.
 
 
+Cipher:
+  description: ""
+  message: "Decryption/Cipher: {self.event}"
+
+Resource:
+  description: ""
+  message: "Decryption/Resource: {self.event}"
+
+Resume:
+  description: ""
+  message: "Decryption/Resume: {self.event}"
+
+Version:
+  description: ""
+  message: "Decryption/Version: {self.event}"
+
+Protocol:
+  description: ""
+  message: "Decryption/Protocol: {self.event}"
+
+Certificate:
+  description: ""
+  message: "Decryption/Certificate: {self.event}"
+
+Feature:
+  description: ""
+  message: "Decryption/Feature: {self.event}"
+
+HSM:
+  description: ""
+  message: "Decryption/HSM: {self.event}"
+
 default:
   description: "A default event for firewall webhooks."
   message: "An unknown event has been received from a firewall."
