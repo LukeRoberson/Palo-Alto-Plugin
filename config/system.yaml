@@ -12,11 +12,11 @@ general:
 
 userid:
   description: "An alert for the User-ID system. This is not about users themselves."
-  message: "{self.device_name} has detected a {self.name} issue.</br>{self.description}"
+  message: "User-ID: {self.device_name} has detected a {self.name} issue. \n\n{self.description}"
 
 lacp:
   description: "A problem with LACP (Link Aggregation Control Protocol) has been detected."
-  message: "{self.device_name} has detected an LACP {self.name} issue on {self.object}.</br>{self.description}"
+  message: "{self.device_name} has detected an LACP {self.name} issue on {self.object}. \n\n{self.description}"
 
 default:
   description: "A default event for firewall webhooks."

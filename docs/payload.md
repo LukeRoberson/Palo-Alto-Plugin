@@ -121,6 +121,9 @@ https://docs.paloaltonetworks.com/strata-logging-service/log-reference/common-lo
 
 Events relating to configuration changes.
 
+https://docs.paloaltonetworks.com/pan-os/11-1/pan-os-admin/monitoring/use-syslog-for-monitoring/syslog-field-descriptions/config-log-fields
+</br></br>
+
 
 | Variable                     | Description                                           | Example Value                 |
 | ---------------------------- | ----------------------------------------------------- | ----------------------------- |
@@ -167,7 +170,7 @@ Command types:
 * set
 
 Notes:
-* _subtype_ is unused in the config log.
+* _subtype_ is unused in the config log. It is set to "0".
 </br></br>
 
 

@@ -94,7 +94,8 @@ class EventHandler:
 
         self.config = config
         self.plugin_name = config['name']
-        self.default_chat = config.get('chats', {}).get('default', None)
+        self.chat_list = config.get('chats', {})
+        self.default_chat = self.chat_list.get('default', None)
         self.source = "Unknown"
 
     def __enter__(
@@ -157,17 +158,46 @@ class EventHandler:
         self.timestamp = event.get("alert", {}).get("timestamp")
         self.event_type = event.get("details", {}).get("type")
         self.event_subtype = event.get("details", {}).get("subtype")
-
         self.device_name = event.get("device", {}).get("device_name")
         self.device_version = event.get("device", {}).get("sender_sw_version")
         self.device_serial = event.get("device", {}).get("serial")
 
+        # Get config events
+        if self.source == "config":
+            self.config_user = event.get("config", {}).get("user")
+            self.config_client = event.get("config", {}).get("client")
+            self.config_host = event.get("config", {}).get("host")
+            self.config_cmd = event.get("config", {}).get("cmd")
+            self.config_full_path = event.get("config", {}).get("full-path")
+            self.config_comment = event.get("config", {}).get("comment")
+            self.config_result = event.get("config", {}).get("result")
+
+            # Improve event_subtype for config events
+            #   Can effectively ignore the built in one, as it is always "0"
+            if self.config_cmd == "edit":
+                self.event_subtype = "edit"
+            elif self.config_cmd == "commit":
+                self.event_subtype = "commit"
+            elif self.config_cmd == "add":
+                self.event_subtype = "add"
+            elif self.config_cmd == "clone":
+                self.event_subtype = "clone"
+            elif self.config_cmd == "delete":
+                self.event_subtype = "delete"
+            elif self.config_cmd == "move":
+                self.event_subtype = "move"
+            elif self.config_cmd == "rename":
+                self.event_subtype = "rename"
+            elif self.config_cmd == "set":
+                self.event_subtype = "set"
+
         # Get system events
-        self.severity = event.get("alert", {}).get("severity")
-        self.module = event.get("details", {}).get("module")
-        self.name = event.get("details", {}).get("name")
-        self.description = event.get("details", {}).get("description")
-        self.object = event.get("details", {}).get("object")
+        if self.source == "system":
+            self.severity = event.get("alert", {}).get("severity")
+            self.module = event.get("details", {}).get("module")
+            self.name = event.get("details", {}).get("name")
+            self.description = event.get("details", {}).get("description")
+            self.object = event.get("details", {}).get("object")
 
     def _parse_event(
         self,
@@ -184,13 +214,51 @@ class EventHandler:
 
         message = ""
         handler = {}
-        sources = [
-            "config", "system", "userid", "globalprotect", "auth", "iptag",
-            "hip", "threat", "url", "data", "wildfire", "traffic", "tunnel",
-            "decryption"
-        ]
 
-        if self.source not in sources:
+        if self.source == "config":
+            handler = CONFIG_EVENTS.get(self.event_subtype, None)
+
+        elif self.source == "system":
+            handler = SYSTEM_EVENTS.get(self.event_subtype, None)
+
+        elif self.source == "userid":
+            handler = USERID_EVENTS.get(self.event_subtype, None)
+
+        elif self.source == "globalprotect":
+            handler = GLOBALPROTECT_EVENTS.get(self.event_subtype, None)
+
+        elif self.source == "auth":
+            handler = AUTH_EVENTS.get(self.event_subtype, None)
+
+        elif self.source == "iptag":
+            handler = IPTAG_EVENTS.get(self.event_subtype, None)
+
+        elif self.source == "hip":
+            handler = HIP_EVENTS.get(self.event_subtype, None)
+
+        elif self.source == "threat":
+            handler = THREAT_EVENTS.get(self.event_subtype, None)
+
+        elif self.source == "url":
+            handler = URL_EVENTS.get(self.event_subtype, None)
+
+        elif self.source == "data":
+            handler = DATA_EVENTS.get(self.event_subtype, None)
+
+        elif self.source == "wildfire":
+            handler = WILDFIRE_EVENTS.get(self.event_subtype, None)
+
+        elif self.source == "traffic":
+            handler = TRAFFIC_EVENTS.get(self.event_subtype, None)
+
+        elif self.source == "tunnel":
+            handler = TUNNEL_EVENTS.get(self.event_subtype, None)
+
+        elif self.source == "decryption":
+            handler = DECRYPTION_EVENTS.get(self.event_subtype, None)
+
+        # If there's no handler found for the event type
+        if handler is None or handler == {}:
             logging.error(
                 f"Unknown alert type for event: {self.event}. "
                 "Cannot process event."
@@ -204,55 +272,8 @@ class EventHandler:
             message = f"Unknown Palo Alto event:\n{self.event}"
             self.teams_msg = f"Unknown Palo Alto event: {self.event}"
 
-        elif self.source == "config":
-            pass
-
-        elif self.source == "system":
-            handler = SYSTEM_EVENTS.get(self.event_subtype, None)
-            if handler is None:
-                logging.error(
-                    f"Unhandled event type: {self.event_subtype}. "
-                    "Cannot process event."
-                )
-                message = f"Unhandled Palo Alto event: {self.event}:\n"
-
-        elif self.source == "userid":
-            pass
-
-        elif self.source == "globalprotect":
-            pass
-
-        elif self.source == "auth":
-            pass
-
-        elif self.source == "iptag":
-            pass
-
-        elif self.source == "hip":
-            pass
-
-        elif self.source == "threat":
-            pass
-
-        elif self.source == "url":
-            pass
-
-        elif self.source == "data":
-            pass
-
-        elif self.source == "wildfire":
-            pass
-
-        elif self.source == "traffic":
-            pass
-
-        elif self.source == "tunnel":
-            pass
-
-        elif self.source == "decryption":
-            pass
-
-        if self.source in sources:
+        # If there is a handler for the event type
+        else:
             try:
                 # Get the formatted message
                 message = handler.get(
@@ -332,6 +353,23 @@ class EventHandler:
         ]
         log["destination"] = action_list
 
+        # Check if there's a Teams chat specified
+        teams_chat = None
+        if 'chat' in actions:
+            logging.info(f"Using chat: {actions['chat']}")
+            teams_chat = self.chat_list.get(
+                actions['chat'], None
+            )
+        else:
+            logging.info("Using default chat")
+            teams_chat = self.default_chat
+        if teams_chat is None:
+            logging.error(
+                "No Teams chat specified in the configuration. "
+                "Using default chat."
+            )
+            teams_chat = self.default_chat
+
         # If no actions are specified, do nothing
         if not action_list:
             return
@@ -346,5 +384,5 @@ class EventHandler:
             alert=log['log']['alert'],
             severity=log['log']['severity'],
             teams_msg=log['teams']['message'],
-            chat_id=self.default_chat,
+            chat_id=teams_chat,
         )

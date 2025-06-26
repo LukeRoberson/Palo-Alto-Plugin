@@ -6,9 +6,37 @@
 # - teams: Optional message template for Microsoft Teams notifications. If not provided, the other message will be used.
 
 
-"0":
-  description: ""
-  message: "Configuration event detected: {self.event}"
+commit:
+  description: "A user has committed changes to the firewall configuration."
+  message: "{self.user} has committed changes to {self.device_name}. Result: {self.config_result}"
+
+add:
+  description: "A user has added something to the firewall."
+  message: "{self.user} has added {self.config_full_path} to {self.device_name}."
+
+edit:
+  description: "A user has edited something on the firewall."
+  message: "{self.user} has edited {self.config_full_path} on {self.device_name}."
+
+clone:
+  description: "A user has cloned an object."
+  message: "{self.user} has cloned {self.config_full_path} on {self.device_name}."
+
+delete:
+  description: "A user has deleted an object."
+  message: "{self.user} has deleted {self.config_full_path} on {self.device_name}."
+
+move:
+  description: "A user has moved an object."
+  message: "{self.user} has moved {self.config_full_path} on {self.device_name}."
+
+rename:
+  description: "A user has renamed an object."
+  message: "{self.user} has renamed {self.config_full_path} on {self.device_name}."
+
+set:
+  description: "The user has set some new configuration"
+  message: "Config event: {self.event}"
 
 default:
   description: "A default event for firewall webhooks."
