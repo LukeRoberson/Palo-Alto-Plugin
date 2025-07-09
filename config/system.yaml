@@ -9,6 +9,10 @@
 #   Here, the module is appended to 'general', eg, general_upgrade, general_auth, etc.
 
 
+general:
+  description: ""
+  message: "{self.device_name} has detected a general event: {self.description}"
+
 general_general:
   description: ""
   message: "{self.device_name} has detected a general event: {self.description}"
@@ -55,7 +59,7 @@ global-protect:
 
 ha:
   description: ""
-  message: "System/HA event: {self.event}"
+  message: "{self.device_name} reports HA event: {self.description}"
 
 hw:
   description: ""

@@ -6,6 +6,10 @@
 # - teams: Optional message template for Microsoft Teams notifications. If not provided, the other message will be used.
 
 
+audit-commit:
+  description: "Audit comments have been added to an object"
+  message: "{self.config_user} has edited {self.config_full_path} on {self.device_name}. Comment: {self.config_comment}."
+
 commit:
   description: "A user has committed changes to the firewall configuration."
   message: "{self.config_user} has committed changes to {self.device_name}. Comment: {self.config_comment}. Result: {self.config_result}"
