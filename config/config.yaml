@@ -1,8 +1,674 @@
 name: "paloalto"
 
 chats:
-    default: "19:1c9b05f9-199e-40ce-9c7b-b7614b7ea7d8_1f53061b-8d51-49ac-9c8a-bbf1cebd5ab6@unq.gbl.spaces"
-    luke: "19:1c9b05f9-199e-40ce-9c7b-b7614b7ea7d8_1f53061b-8d51-49ac-9c8a-bbf1cebd5ab6@unq.gbl.spaces"
+    default: xxxxxxxxxxxxxxxxxxxxxxxxxxxx
+    network: xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+
+config:
+    edit:
+        web: true
+        sql: false
+        syslog: false
+        teams: false
+
+    commit:
+        web: true
+        sql: false
+        syslog: false
+        teams: true
+        chat: network
+
+    add:
+        web: true
+        sql: false
+        syslog: false
+        teams: false
+
+    clone:
+        web: true
+        sql: false
+        syslog: false
+        teams: false
+
+    delete:
+        web: true
+        sql: false
+        syslog: false
+        teams: false
+
+    move:
+        web: true
+        sql: false
+        syslog: false
+        teams: false
+
+    rename:
+        web: true
+        sql: false
+        syslog: false
+        teams: false
+
+    set:
+        web: true
+        sql: false
+        syslog: false
+        teams: false
+
+    audit-commit:
+        web: true
+        sql: false
+        syslog: false
+        teams: true
+
+    default:
+        web: true
+        sql: false
+        syslog: false
+        teams: false
+
+system:
+    general:
+        web: true
+        sql: false
+        syslog: false
+        teams: true
+    general_general:
+        web: true
+        sql: false
+        syslog: false
+        teams: true
+    general_management:
+        web: true
+        sql: false
+        syslog: false
+        teams: true
+    general_auth:
+        web: true
+        sql: false
+        syslog: false
+        teams: true
+    general_ha:
+        web: true
+        sql: false
+        syslog: false
+        teams: true
+    general_upgrade:
+        web: true
+        sql: false
+        syslog: false
+        teams: true
+    general_chassis:
+        web: true
+        sql: false
+        syslog: false
+        teams: true
+
+    auth:
+        web: true
+        sql: false
+        syslog: false
+        teams: true
+    
+    userid:
+        web: true
+        sql: false
+        syslog: false
+        teams: true
+        chat: network
+
+    dhcp:
+        web: true
+        sql: false
+        syslog: false
+        teams: true
+
+    dnsproxy:
+        web: true
+        sql: false
+        syslog: false
+        teams: true
+
+    dos:
+        web: true
+        sql: false
+        syslog: false
+        teams: true
+
+    global-protect:
+        web: true
+        sql: false
+        syslog: false
+        teams: true
+
+    ha:
+        web: true
+        sql: false
+        syslog: false
+        teams: true
+
+    hw:
+        web: true
+        sql: false
+        syslog: false
+        teams: true
+
+    nat:
+        web: true
+        sql: false
+        syslog: false
+        teams: true
+
+    ntpd:
+        web: true
+        sql: false
+        syslog: false
+        teams: true
+
+    pbf:
+        web: true
+        sql: false
+        syslog: false
+        teams: true
+
+    port:
+        web: true
+        sql: false
+        syslog: false
+        teams: true
+
+    pppoe:
+        web: true
+        sql: false
+        syslog: false
+        teams: true
+
+    ras:
+        web: true
+        sql: false
+        syslog: false
+        teams: true
+
+    routing:
+        web: true
+        sql: false
+        syslog: false
+        teams: true
+
+    satd:
+        web: true
+        sql: false
+        syslog: false
+        teams: true
+
+    sslmgr:
+        web: true
+        sql: false
+        syslog: false
+        teams: true
+
+    sslvpn:
+        web: true
+        sql: false
+        syslog: false
+        teams: true
+
+    url-filtering:
+        web: true
+        sql: false
+        syslog: false
+        teams: true
+
+    vpn:
+        web: true
+        sql: false
+        syslog: false
+        teams: true
+
+    lacp:
+        web: true
+        sql: false
+        syslog: false
+        teams: true
+        chat: network
+
+    default:
+        web: true
+        sql: false
+        syslog: false
+        teams: true
+
+userid:
+    login:
+        web: true
+        sql: false
+        syslog: false
+        teams: true
+
+    logout:
+        web: true
+        sql: false
+        syslog: false
+        teams: true
+
+    register-tag:
+        web: true
+        sql: false
+        syslog: false
+        teams: true
+
+    unregister-tag:
+        web: true
+        sql: false
+        syslog: false
+        teams: true
+
+    default:
+        web: true
+        sql: false
+        syslog: false
+        teams: true
+
+globalprotect:
+    portal-auth:
+        web: true
+        sql: false
+        syslog: false
+        teams: true
+    portal-gen-cookie:
+        web: true
+        sql: false
+        syslog: false
+        teams: true
+    portal-getconfig:
+        web: true
+        sql: false
+        syslog: false
+        teams: true
+    portal-prelogin:
+        web: true
+        sql: false
+        syslog: false
+        teams: true
+
+    gateway-agent-msg:
+        web: true
+        sql: false
+        syslog: false
+        teams: true
+    gateway-auth:
+        web: true
+        sql: false
+        syslog: false
+        teams: true
+    gateway-config-release:
+        web: true
+        sql: false
+        syslog: false
+        teams: true
+    gateway-connected:
+        web: true
+        sql: false
+        syslog: false
+        teams: true
+    gateway-framed-ip:
+        web: true
+        sql: false
+        syslog: false
+        teams: true
+    gateway-getconfig:
+        web: true
+        sql: false
+        syslog: false
+        teams: true
+    gateway-hip-check:
+        web: true
+        sql: false
+        syslog: false
+        teams: true
+    gateway-hip-report:
+        web: true
+        sql: false
+        syslog: false
+        teams: true
+    gateway-inheritance:
+        web: true
+        sql: false
+        syslog: false
+        teams: true
+    gateway-logout:
+        web: true
+        sql: false
+        syslog: false
+        teams: true
+    gateway-prelogin:
+        web: true
+        sql: false
+        syslog: false
+        teams: true
+    gateway-register:
+        web: true
+        sql: false
+        syslog: false
+        teams: true
+    gateway-setup-ipsec:
+        web: true
+        sql: false
+        syslog: false
+        teams: true
+    gateway-setup-ssl:
+        web: true
+        sql: false
+        syslog: false
+        teams: true
+    gateway-switch-to-ssl:
+        web: true
+        sql: false
+        syslog: false
+        teams: true
+    gateway-tunnel-latency:
+        web: true
+        sql: false
+        syslog: false
+        teams: true
+    quarantine-add:
+        web: true
+        sql: false
+        syslog: false
+        teams: true
+    quarantine-delete:
+        web: true
+        sql: false
+        syslog: false
+        teams: true
+
+    clientlessvpn-login:
+        web: true
+        sql: false
+        syslog: false
+        teams: true
+    clientlessvpn-logout:
+        web: true
+        sql: false
+        syslog: false
+        teams: true
+    clientlessvpn-prelogin:
+        web: true
+        sql: false
+        syslog: false
+        teams: true
+
+    default:
+        web: true
+        sql: false
+        syslog: false
+        teams: true
+
+auth:
+    default:
+        web: true
+        sql: false
+        syslog: false
+        teams: true
+
+iptag:
+    default:
+        web: true
+        sql: false
+        syslog: false
+        teams: true
+
+hip:
+    hip_match:
+        web: true
+        sql: false
+        syslog: false
+        teams: true
+
+    default:
+        web: true
+        sql: false
+        syslog: false
+        teams: true
+
+threat:
+    virus:
+        web: true
+        sql: false
+        syslog: false
+        teams: true
+    data:
+        web: true
+        sql: false
+        syslog: false
+        teams: true
+    file:
+        web: true
+        sql: false
+        syslog: false
+        teams: true
+    flood:
+        web: true
+        sql: false
+        syslog: false
+        teams: true
+    packet:
+        web: true
+        sql: false
+        syslog: false
+        teams: true
+    scan:
+        web: true
+        sql: false
+        syslog: false
+        teams: true
+    spyware:
+        web: true
+        sql: false
+        syslog: false
+        teams: true
+    url:
+        web: true
+        sql: false
+        syslog: false
+        teams: true
+    ml-virus:
+        web: true
+        sql: false
+        syslog: false
+        teams: true
+    vulnerability:
+        web: true
+        sql: false
+        syslog: false
+        teams: true
+    wildfire:
+        web: true
+        sql: false
+        syslog: false
+        teams: true
+    wildfire-virus:
+        web: true
+        sql: false
+        syslog: false
+        teams: true
+
+    default:
+        web: true
+        sql: false
+        syslog: false
+        teams: true
+
+url:
+    default:
+        web: true
+        sql: false
+        syslog: false
+        teams: true
+
+data:
+    data:
+        web: true
+        sql: false
+        syslog: false
+        teams: true
+    dlp:
+        web: true
+        sql: false
+        syslog: false
+        teams: true
+    dlp-non-file:
+        web: true
+        sql: false
+        syslog: false
+        teams: true
+    file:
+        web: true
+        sql: false
+        syslog: false
+        teams: true
+    default:
+        web: true
+        sql: false
+        syslog: false
+        teams: true
+
+wildfire:
+    malware:
+        web: true
+        sql: false
+        syslog: false
+        teams: true
+
+    phishing:
+        web: true
+        sql: false
+        syslog: false
+        teams: true
+
+    grayware:
+        web: true
+        sql: false
+        syslog: false
+        teams: true
+
+    benign:
+        web: true
+        sql: false
+        syslog: false
+        teams: true
+
+    default:
+        web: true
+        sql: false
+        syslog: false
+        teams: true
+
+traffic:
+    Start:
+        web: true
+        sql: false
+        syslog: false
+        teams: true
+
+    End:
+        web: true
+        sql: false
+        syslog: false
+        teams: true
+
+    Drop:
+        web: true
+        sql: false
+        syslog: false
+        teams: true
+    Deny:
+        web: true
+        sql: false
+        syslog: false
+        teams: true
+
+    default:
+        web: true
+        sql: false
+        syslog: false
+        teams: true
+
+tunnel:
+    Start:
+        web: true
+        sql: false
+        syslog: false
+        teams: true
+
+    End:
+        web: true
+        sql: false
+        syslog: false
+        teams: true
+
+    Drop:
+        web: true
+        sql: false
+        syslog: false
+        teams: true
+    Deny:
+        web: true
+        sql: false
+        syslog: false
+        teams: true
+
+    default:
+        web: true
+        sql: false
+        syslog: false
+        teams: true
+
+decryption:
+    Cipher:
+        web: true
+        sql: false
+        syslog: false
+        teams: true
+    Resource:
+        web: true
+        sql: false
+        syslog: false
+        teams: true
+    Resume:
+        web: true
+        sql: false
+        syslog: false
+        teams: true
+    Version:
+        web: true
+        sql: false
+        syslog: false
+        teams: true
+    Protocol:
+        web: true
+        sql: false
+        syslog: false
+        teams: true
+    Certificate:
+        web: true
+        sql: false
+        syslog: false
+        teams: true
+    Feature:
+        web: true
+        sql: false
+        syslog: false
+        teams: true
+    HSM:
+        web: true
+        sql: false
+        syslog: false
+        teams: true
+    default:
+        web: true
+        sql: false
+        syslog: false
+        teams: true
 
 default:
     web: true

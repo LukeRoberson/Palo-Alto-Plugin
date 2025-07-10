@@ -37,6 +37,10 @@ general_chassis:
   description: ""
   message: "General chassis event detected: {self.event}"
 
+auth:
+  description: "An event related to authentication, such as user login or logout, or GP auth."
+  message: "{self.device_name} has reported {self.name} auth events. {self.description}"
+
 crypto:
   description: ""
   message: "System/Crypto event: {self.event}"
@@ -90,8 +94,8 @@ ras:
   message: "System/RAS event: {self.event}"
 
 routing:
-  description: ""
-  message: "System/Routing event: {self.event}"
+  description: "Routing events are related to the routing protocols and their operations. BGP, OSPF, etc."
+  message: "{self.device_name} has experienced a {self.name} event. {self.description}"
 
 satd:
   description: ""
@@ -106,8 +110,8 @@ sslvpn:
   message: "System/SSL VPN event: {self.event}"
 
 url-filtering:
-  description: ""
-  message: "System/URL Filter event: {self.event}"
+  description: "An event relating to connecting to the PA cloud service for URL filtering."
+  message: "URL filtering event: {self.device_name} {self.description}. ({self.name})"
 
 vpn:
   description: ""
