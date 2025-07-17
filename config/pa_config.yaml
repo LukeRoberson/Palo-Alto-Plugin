@@ -42,6 +42,14 @@ set:
   description: "The user has set some new configuration"
   message: "Config event: {self.event}"
 
+audit-commit:
+  description: "Config has been committed"
+  message: "{self.config_user} has committed changes to {self.device_name}. Comment: {self.config_comment}. Config path: {self.config_full_path}."
+
+upload:
+  description: "File uploaded to the firewall."
+  message: "{self.config_user} has uploaded a file to {self.device_name}. File: {self.config_full_path}."
+
 default:
   description: "A default event for firewall webhooks."
   message: "An unknown event has been received from a firewall."
