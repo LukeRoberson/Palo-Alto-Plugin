@@ -170,6 +170,8 @@ class EventHandler:
             self.event_subtype = "rename"
         elif self.config_cmd == "set":
             self.event_subtype = "set"
+        elif self.config_cmd == "audit-commit":
+            self.event_subtype = "audit-commit"
 
         # Set severity based on result
         if self.config_result == "success":

@@ -114,8 +114,8 @@ url-filtering:
   message: "URL filtering event: {self.device_name} {self.description}. ({self.name})"
 
 vpn:
-  description: ""
-  message: "System/VPN event: {self.event}"
+  description: "An event related to IPSec VPN tunnels"
+  message: "{self.device_name} has reported a VPN event: {self.description}"
 
 userid:
   description: "An alert for the User-ID system. This is not about users themselves."
