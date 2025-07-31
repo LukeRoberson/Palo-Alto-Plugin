@@ -310,6 +310,12 @@ class EventHandler:
         # Subtype is not used, so remap the event ID to the subtype
         self.event_subtype = self.gp_event_name
 
+        # Severity is not included in the event data
+        if self.gp_event_status == "success":
+            self.severity = "info"
+        else:
+            self.severity = "error"
+
     def _auth_events(
         self,
     ) -> None:
@@ -887,23 +893,23 @@ class EventHandler:
 
         # Get User-ID events
         elif self.source == "userid":
-            pass
+            self._userid_events()
 
         # Get Global Protect events
         elif self.source == "globalprotect":
-            pass
+            self._gp_events()
 
         # Get Authentication events
         elif self.source == "auth":
-            pass
+            self._auth_events()
 
         # Get IP-Tag events
         elif self.source == "iptag":
-            pass
+            self._iptag_events()
 
         # Get HIP Check events
         elif self.source == "hip":
-            pass
+            self._hip_events()
 
         # Get Security events (these have the same format)
         elif (
@@ -912,19 +918,19 @@ class EventHandler:
             self.source == "data" or
             self.source == "wildfire"
         ):
-            pass
+            self._security_events()
 
         # Get Traffic events
         elif self.source == "traffic":
-            pass
+            self._traffic_events()
 
         # Get Tunnel events
         elif self.source == "tunnel":
-            pass
+            self._tunnel_events()
 
         # Get Decryption events
         elif self.source == "decryption":
-            pass
+            self._decryption_events()
 
     def _parse_event(
         self,
@@ -941,51 +947,76 @@ class EventHandler:
 
         message = ""
         handler = {}
+        tshoot_handler = None
 
         if self.source == "config":
+            tshoot_handler = 'config'
             handler = CONFIG_EVENTS.get(self.event_subtype, None)
 
         elif self.source == "system":
+            tshoot_handler = 'system'
             handler = SYSTEM_EVENTS.get(self.event_subtype, None)
 
         elif self.source == "userid":
+            tshoot_handler = 'userid'
             handler = USERID_EVENTS.get(self.event_subtype, None)
 
         elif self.source == "globalprotect":
+            tshoot_handler = 'globalprotect'
             handler = GLOBALPROTECT_EVENTS.get(self.event_subtype, None)
 
         elif self.source == "auth":
+            tshoot_handler = 'auth'
             handler = AUTH_EVENTS.get(self.event_subtype, None)
 
         elif self.source == "iptag":
+            tshoot_handler = 'iptag'
             handler = IPTAG_EVENTS.get(self.event_subtype, None)
 
         elif self.source == "hip":
+            tshoot_handler = 'hip'
             handler = HIP_EVENTS.get(self.event_subtype, None)
 
         elif self.source == "threat":
+            tshoot_handler = 'threat'
             handler = THREAT_EVENTS.get(self.event_subtype, None)
 
         elif self.source == "url":
+            tshoot_handler = 'url'
             handler = URL_EVENTS.get(self.event_subtype, None)
 
         elif self.source == "data":
+            tshoot_handler = 'data'
             handler = DATA_EVENTS.get(self.event_subtype, None)
 
         elif self.source == "wildfire":
+            tshoot_handler = 'wildfire'
             handler = WILDFIRE_EVENTS.get(self.event_subtype, None)
 
         elif self.source == "traffic":
+            tshoot_handler = 'traffic'
             handler = TRAFFIC_EVENTS.get(self.event_subtype, None)
 
         elif self.source == "tunnel":
+            tshoot_handler = 'tunnel'
             handler = TUNNEL_EVENTS.get(self.event_subtype, None)
 
         elif self.source == "decryption":
+            tshoot_handler = 'decryption'
             handler = DECRYPTION_EVENTS.get(self.event_subtype, None)
 
         # If there's no handler found for the event type
         if handler is None or handler == {}:
+            tshoot = {
+                'tshoot': {
+                    'source': self.source,
+                    'event_type': self.event_type,
+                    'event_subtype': self.event_subtype,
+                    'handler': tshoot_handler,
+                }
+            }
+            self.event.update(tshoot)
+
             logging.error(
                 f"Unknown alert type for event: {self.event}. "
                 "Cannot process event."

@@ -8,65 +8,69 @@
 
 portal-auth:
   description: "GlobalProtect portal authentication stage"
-  message: "GP Portal: {self.event}"
+  message: "{self.gp_client_srcuser} on {self.gp_client_hostname} has authenticated to the {self.gp_portal} portal on {self.device_name} using {self.gp_client_authmethod}."
 portal-gen-cookie:
   description: "GlobalProtect portal authentication override cookie generation event"
   message: "GP Portal: {self.event}"
 portal-getconfig:
-  description: "GlobalProtect portal event for generating GlobalProtect client configuration, such as dynamic app configuration or gateway list"
-  message: "GP Portal: {self.event}"
+  description: "Generating GlobalProtect client configuration, such as dynamic app configuration or gateway list"
+  message: "{self.gp_client_srcuser} on {self.gp_client_hostname} has requested a configuration from the {self.gp_portal} portal on {self.device_name}. Description: {self.gp_event_description}."
 portal-prelogin:
   description: "GlobalProtect portal pre-login event: Checks certificate, generates SAML request, triggers kerberos authentication"
-  message: "GP Portal: {self.event}"
+  message: "{self.gp_client_authmethod} pre-login request for {self.gp_portal} portal on {self.device_name}. Request is from {self.gp_client_publicip} in the {self.gp_client_srcregion} region."
 
 gateway-agent-msg:
   description: "GlobalProtect gateway event for a message received from the GlobalProtect client, such as GlobalProtect client disable reason message"
-  message: "GP Gateway: {self.event}"
+  message: "Update from {self.gp_client_srcuser} on {self.gp_client_hostname} for {self.gp_portal} portal on {self.device_name}. Message: {self.gp_event_description}."
 gateway-auth:
   description: "Indicates GlobalProtect gateway authentication stage"
-  message: "GP Gateway: {self.event}"
+  message: "{self.gp_client_srcuser} on {self.gp_client_hostname} has authenticated to the {self.gp_gateway} gateway on {self.device_name} using {self.gp_client_authmethod}. Gateway selection was {self.gp_selection} with priority {self.gp_priority}."
 gateway-config-release:
   description: "Indicates a GlobalProtect gateway event for configuration release, such as remove ip-user mapping or remove tunnel"
-  message: "GP Gateway: {self.event}"
+  message: "Config release for {self.gp_client_srcuser} on {self.gp_client_hostname}"
 gateway-connected:
-  description: "Indicates a GlobalProtect gateway event for a GlobalProtect client successful connection for tunnel or non-tunnel mode"
-  message: "GP Gateway: {self.event}"
+  description: "Client successful connection for tunnel or non-tunnel mode"
+  message: "{self.gp_client_srcuser} on {self.gp_client_hostname} has connected to the {self.gp_portal} portal on {self.device_name}."
 gateway-framed-ip:
   description: "Indicates a GlobalProtect gateway event where the gateway retrieved a framed IPv4 address from RADIUS for a GlobalProtect client"
   message: "GP Gateway: {self.event}"
 gateway-getconfig:
-  description: "Indicates a GlobalProtect gateway event for generating GlobalProtect client configuration, such as split-tunnel, virtual IP, or tunnel information"
-  message: "GP Gateway: {self.event}"
+  description: "Generating GlobalProtect client configuration, such as split-tunnel, virtual IP, or tunnel information"
+  message: "{self.gp_client_srcuser} on {self.gp_client_hostname} has requested a configuration from the {self.gp_portal} portal on {self.device_name}. Description: {self.gp_event_description}."
 gateway-hip-check:
   description: "Confirm whether a GlobalProtect HIP report was updated or not, and to refresh ip-user mapping"
-  message: "GP Gateway: {self.event}"
+  message: "Gateway HIP check for {self.gp_client_srcuser} on {self.gp_client_hostname}: {self.gp_event_description}"
 gateway-hip-report:
   description: "Confirm whether a HIP report was received from a GlobalProtect client, to update ip-user mapping, and to enforce HIP policy"
-  message: "GP Gateway: {self.event}"
+  message: "Gateway HIP report for {self.gp_client_srcuser} on {self.gp_client_hostname}. Host information collected."
 gateway-inheritance:
   description: "GlobalProtect gateway is using a dynamic IP address and the IP address changed"
   message: "GP Gateway: {self.event}"
 gateway-logout:
   description: "Client logout"
-  message: "GP Gateway: {self.event}"
+  message: "{self.gp_client_srcuser} has logged out from the {self.gp_portal} portal on {self.device_name}."
 gateway-prelogin:
-  description: "Indicates a GlobalProtect gateway pre-login event: Checks certificate, generates SAML request, triggers kerberos authentication"
-  message: "GP Gateway: {self.event}"
+  description: "Checks certificate, generates SAML request, triggers kerberos authentication"
+  message: "Gateway prelogin for {self.gp_portal} portal on {self.device_name}. Request is from {self.gp_client_publicip} in the {self.gp_client_srcregion} region."
 gateway-register:
   description: "Indicates GlobalProtect client user information, such as username, domain-name, computer name, hostid, serial number, public ip, or login time is added on the gateway"
-  message: "GP Gateway: {self.event}"
+  message: "{self.gp_client_srcuser} on {self.gp_client_hostname} has registered with the {self.gp_portal} portal on {self.device_name}."
 gateway-setup-ipsec:
   description: "Indicates a GlobalProtect gateway event for setting up an IPSec VPN tunnel"
-  message: "GP Gateway: {self.event}"
+  message: "Setting up IPSec tunnel for {self.gp_client_srcuser} on {self.gp_client_hostname}. Portal: {self.gp_portal} on {self.device_name}."
 gateway-setup-ssl:
   description: "Indicates a GlobalProtect gateway event for setting up a SSL VPN tunnel"
   message: "GP Gateway: {self.event}"
 gateway-switch-to-ssl:
   description: "Indicates a GlobalProtect gateway tunnel switch from IPSec to SSL considering IPSec tunnel was not successful"
-  message: "GP Gateway: {self.event}"
+  message: "{self.gp_client_srcuser} on {self.gp_client_hostname} has switched to an SSLVPN tunnel. {self.gp_portal} portal on {self.device_name}, connecting from {self.gp_client_publicip} in the {self.gp_client_srcregion} region. Client version {self.gp_client_gpver} on {self.gp_client_osver}."
 gateway-tunnel-latency:
   description: "GlobalProtect gateway latency provided by a GlobalProtect client"
-  message: "GP Gateway: {self.event}"
+  message: "Tunnel latency measured for {self.gp_client_srcuser} on {self.gp_client_hostname}: {self.gp_event_description}"
+gateway-tunnel-notify:
+  description: "Not documented, but it seems to be an update in the GlobalProtect tunnel status"
+  message: "Update for {self.gp_client_srcuser}'s tunnel status: {self.gp_event_description}"
+
 quarantine-add:
   description: "The client is added to the quarantine list"
   message: "GP Gateway: {self.event}"
