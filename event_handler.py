@@ -1072,6 +1072,11 @@ class EventHandler:
             }
         }
 
+        if self.severity != "info":
+            log["teams"]["message"] = (
+                f"**{self.severity.upper()}**: {log['teams']['message']}"
+            )
+
         return log
 
     def process_event(
