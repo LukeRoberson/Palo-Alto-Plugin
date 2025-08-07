@@ -9,6 +9,30 @@
 #   Here, the module is appended to 'general', eg, general_upgrade, general_auth, etc.
 
 
+auth:
+  description: "An event related to authentication, such as user login or logout, or GP auth."
+  message: "{self.device_name} has reported {self.name} auth events. {self.description}"
+
+ctd-agent:
+  description: "Continuous Threat Detection agent. This process connects to the cloud for services like Wildfire."
+  message: "{self.device_name} has reported a CTD agent event: {self.description}"
+
+crypto:
+  description: ""
+  message: "System/Crypto event: {self.event}"
+
+dhcp:
+  description: ""
+  message: "System/dhcp event: {self.event}"
+
+dnsproxy:
+  description: ""
+  message: "System/dnsproxy event: {self.event}"
+
+dos:
+  description: ""
+  message: "System/dos event: {self.event}"
+
 general:
   description: ""
   message: "{self.device_name} has detected a general event: {self.description}"
@@ -36,26 +60,6 @@ general_upgrade:
 general_chassis:
   description: ""
   message: "General chassis event detected: {self.event}"
-
-auth:
-  description: "An event related to authentication, such as user login or logout, or GP auth."
-  message: "{self.device_name} has reported {self.name} auth events. {self.description}"
-
-crypto:
-  description: ""
-  message: "System/Crypto event: {self.event}"
-
-dhcp:
-  description: ""
-  message: "System/dhcp event: {self.event}"
-
-dnsproxy:
-  description: ""
-  message: "System/dnsproxy event: {self.event}"
-
-dos:
-  description: ""
-  message: "System/dos event: {self.event}"
 
 global-protect:
   description: ""
