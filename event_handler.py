@@ -307,14 +307,16 @@ class EventHandler:
             self.event.get("event", {}).get("quarantine_reason")
         )
 
-        # Subtype is not used, so remap the event ID to the subtype
-        self.event_subtype = self.gp_event_name
-
         # Severity is not included in the event data
         if self.gp_event_status == "success":
             self.severity = "info"
         else:
             self.severity = "error"
+            self.gp_event_name = f"{self.gp_event_name}_error"
+            self.event['event']['event_name'] = self.gp_event_name
+
+        # Subtype is not used, so remap the event ID to the subtype
+        self.event_subtype = self.gp_event_name
 
     def _auth_events(
         self,

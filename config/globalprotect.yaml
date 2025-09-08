@@ -8,7 +8,10 @@
 
 portal-auth:
   description: "GlobalProtect portal authentication stage"
-  message: "GP/portal-auth:{self.event}"
+  message: "GP/portal-auth: {self.event}"
+portal-auth_error:
+  description: "GlobalProtect portal authentication stage, error condition"
+  message: "{self.gp_client_srcuser} in the {self.gp_client_srcregion} region had an error authenticating to the {self.gp_portal} portal on {self.device_name} from {self.gp_client_publicip}. Error: {self.gp_event_error}."
 portal-gen-cookie:
   description: "GlobalProtect portal authentication override cookie generation event"
   message: "GP Portal: {self.event}"
@@ -43,6 +46,9 @@ gateway-hip-check:
 gateway-hip-report:
   description: "Confirm whether a HIP report was received from a GlobalProtect client, to update ip-user mapping, and to enforce HIP policy"
   message: "Gateway HIP report for {self.gp_client_srcuser} on {self.gp_client_hostname}. Host information collected."
+gateway-hip-report_error:
+  description: "An error with a HIP report"
+  message: "{self.gp_client_srcuser} on {self.gp_client_hostname} had an error sending a HIP report to the GP gateway on {self.device_name}. Stage: {self.gp_event_stage}, status: {self.gp_event_status}, error: {self.gp_event_error}."
 gateway-inheritance:
   description: "GlobalProtect gateway is using a dynamic IP address and the IP address changed"
   message: "GP Gateway: {self.event}"
@@ -55,6 +61,9 @@ gateway-prelogin:
 gateway-register:
   description: "Indicates GlobalProtect client user information, such as username, domain-name, computer name, hostid, serial number, public ip, or login time is added on the gateway"
   message: "GP/Gateway_Register: {self.event}"
+gateway-register_error:
+  description: "An error with the gateway register event"
+  message: "{self.gp_client_hostname}/{self.gp_client_srcuser} had an error registing with the GP gateway on {self.device_name}. Stage: {self.gp_event_stage}, status: {self.gp_event_status}, error: {self.gp_event_error}."
 gateway-setup-ipsec:
   description: "Indicates a GlobalProtect gateway event for setting up an IPSec VPN tunnel"
   message: "Setting up IPSec tunnel for {self.gp_client_srcuser} on {self.gp_client_hostname}. Portal: {self.gp_portal} on {self.device_name}."
@@ -63,7 +72,7 @@ gateway-setup-ssl:
   message: "GP Gateway: {self.event}"
 gateway-switch-to-ssl:
   description: "Indicates a GlobalProtect gateway tunnel switch from IPSec to SSL considering IPSec tunnel was not successful"
-  message: "GP/gateway-switch-to-ssl: {self.event}"
+  message: "{self.gp_client_srcuser} on {self.gp_client_hostname} is switching to SSL tunnel for {self.gp_portal} portal on {self.device_name}."
 gateway-tunnel-latency:
   description: "GlobalProtect gateway latency provided by a GlobalProtect client"
   message: "Tunnel latency measured for {self.gp_client_srcuser} on {self.gp_client_hostname}: {self.gp_event_description}"
