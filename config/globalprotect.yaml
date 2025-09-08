@@ -83,7 +83,7 @@ clientlessvpn-login:
   message: "GP Clientless VPN: {self.event}"
 clientlessvpn-logout:
   description: "Portal event for GlobalProtect Clientless VPN logout"
-  message: "GP Clientless VPN: {self.event}"
+  message: "GP Clientless VPN logout. {self.gp_client_publicip} logged out from {self.gp_portal} portal on {self.device_name}."
 clientlessvpn-prelogin:
   description: "Indicates a GlobalProtect portal pre-login event: Checks certificate, generates SAML request, triggers kerberos authentication"
   message: "GP Clientless VPN: {self.event}"

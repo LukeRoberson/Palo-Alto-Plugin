@@ -111,7 +111,11 @@ sslmgr:
 
 sslvpn:
   description: ""
-  message: "System/SSL VPN event: {self.event}"
+  message: "System/SSLVPN event: {self.event}"
+
+tls:
+  description: "A certificate or TLS-related event."
+  message: "{self.name} on {self.device_name}: {self.description}"
 
 url-filtering:
   description: "An event relating to connecting to the PA cloud service for URL filtering."
