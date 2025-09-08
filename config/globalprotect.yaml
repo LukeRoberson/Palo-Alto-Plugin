@@ -8,7 +8,7 @@
 
 portal-auth:
   description: "GlobalProtect portal authentication stage"
-  message: "{self.gp_client_srcuser} on {self.gp_client_hostname} has authenticated to the {self.gp_portal} portal on {self.device_name} using {self.gp_client_authmethod}."
+  message: "GP/portal-auth:{self.event}"
 portal-gen-cookie:
   description: "GlobalProtect portal authentication override cookie generation event"
   message: "GP Portal: {self.event}"
@@ -54,7 +54,7 @@ gateway-prelogin:
   message: "Gateway prelogin for {self.gp_portal} portal on {self.device_name}. Request is from {self.gp_client_publicip} in the {self.gp_client_srcregion} region."
 gateway-register:
   description: "Indicates GlobalProtect client user information, such as username, domain-name, computer name, hostid, serial number, public ip, or login time is added on the gateway"
-  message: "{self.gp_client_srcuser} on {self.gp_client_hostname} has registered with the {self.gp_portal} portal on {self.device_name}."
+  message: "GP/Gateway_Register: {self.event}"
 gateway-setup-ipsec:
   description: "Indicates a GlobalProtect gateway event for setting up an IPSec VPN tunnel"
   message: "Setting up IPSec tunnel for {self.gp_client_srcuser} on {self.gp_client_hostname}. Portal: {self.gp_portal} on {self.device_name}."
@@ -63,7 +63,7 @@ gateway-setup-ssl:
   message: "GP Gateway: {self.event}"
 gateway-switch-to-ssl:
   description: "Indicates a GlobalProtect gateway tunnel switch from IPSec to SSL considering IPSec tunnel was not successful"
-  message: "{self.gp_client_srcuser} on {self.gp_client_hostname} has switched to an SSLVPN tunnel. {self.gp_portal} portal on {self.device_name}, connecting from {self.gp_client_publicip} in the {self.gp_client_srcregion} region. Client version {self.gp_client_gpver} on {self.gp_client_osver}."
+  message: "GP/gateway-switch-to-ssl: {self.event}"
 gateway-tunnel-latency:
   description: "GlobalProtect gateway latency provided by a GlobalProtect client"
   message: "Tunnel latency measured for {self.gp_client_srcuser} on {self.gp_client_hostname}: {self.gp_event_description}"
