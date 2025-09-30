@@ -28,6 +28,9 @@ gateway-agent-msg:
 gateway-auth:
   description: "Indicates GlobalProtect gateway authentication stage"
   message: "{self.gp_client_srcuser} on {self.gp_client_hostname} has authenticated to the {self.gp_gateway} gateway on {self.device_name} using {self.gp_client_authmethod}. Gateway selection was {self.gp_selection} with priority {self.gp_priority}."
+gateway-auth_error:
+  description: "Indicates GlobalProtect gateway authentication stage, error condition"
+  message: "A user has failed auth to {self.gp_portal} portal on {self.device_name} using {self.gp_client_authmethod}. IP: {self.gp_client_publicip}. Region: {self.gp_client_srcregion}."
 gateway-config-release:
   description: "Indicates a GlobalProtect gateway event for configuration release, such as remove ip-user mapping or remove tunnel"
   message: "Config release for {self.gp_client_srcuser} on {self.gp_client_hostname}"

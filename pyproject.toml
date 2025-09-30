@@ -1,9 +1,9 @@
 [tool.project-metadata]
 name = "Palo Alto Plugin"
 description = "A plugin for the AI assistant app, enhancing it with Palo Alto capabilities."
-version = "1.0.26"
+version = "1.0.27"
 
 [tool.versioning]
 major = 1
 minor = 0
-patch = 26
+patch = 27

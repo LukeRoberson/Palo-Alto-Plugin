@@ -172,6 +172,8 @@ class EventHandler:
             self.event_subtype = "set"
         elif self.config_cmd == "audit-commit":
             self.event_subtype = "audit-commit"
+        elif self.config_cmd == "upload":
+            self.event_subtype = "upload"
 
         # Set severity based on result
         if self.config_result == "success":

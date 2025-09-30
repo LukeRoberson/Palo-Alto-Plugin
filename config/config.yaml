@@ -59,6 +59,12 @@ config:
         sql: false
         syslog: false
         teams: true
+        
+    upload:
+        web: true
+        sql: false
+        syslog: false
+        teams: true
 
     default:
         web: true
@@ -67,6 +73,42 @@ config:
         teams: false
 
 system:
+    auth:
+        web: true
+        sql: false
+        syslog: false
+        teams: true
+    
+    ctd-agent:
+        web: true
+        sql: false
+        syslog: false
+        teams: true
+    
+    dhcp:
+        web: true
+        sql: false
+        syslog: false
+        teams: true
+
+    dnsproxy:
+        web: true
+        sql: false
+        syslog: false
+        teams: true
+
+    dos:
+        web: true
+        sql: false
+        syslog: false
+        teams: true
+
+    global-protect:
+        web: true
+        sql: false
+        syslog: false
+        teams: true
+
     general:
         web: true
         sql: false
@@ -103,43 +145,6 @@ system:
         syslog: false
         teams: true
 
-    auth:
-        web: true
-        sql: false
-        syslog: false
-        teams: true
-    
-    userid:
-        web: true
-        sql: false
-        syslog: false
-        teams: true
-        chat: network
-
-    dhcp:
-        web: true
-        sql: false
-        syslog: false
-        teams: true
-
-    dnsproxy:
-        web: true
-        sql: false
-        syslog: false
-        teams: true
-
-    dos:
-        web: true
-        sql: false
-        syslog: false
-        teams: true
-
-    global-protect:
-        web: true
-        sql: false
-        syslog: false
-        teams: true
-
     ha:
         web: true
         sql: false
@@ -151,6 +156,13 @@ system:
         sql: false
         syslog: false
         teams: true
+
+    lacp:
+        web: true
+        sql: false
+        syslog: false
+        teams: true
+        chat: network
 
     nat:
         web: true
@@ -212,24 +224,30 @@ system:
         syslog: false
         teams: true
 
+    tls:
+        web: true
+        sql: false
+        syslog: false
+        teams: true
+
     url-filtering:
         web: true
         sql: false
         syslog: false
         teams: true
 
-    vpn:
-        web: true
-        sql: false
-        syslog: false
-        teams: true
-
-    lacp:
+    userid:
         web: true
         sql: false
         syslog: false
         teams: true
         chat: network
+
+    vpn:
+        web: true
+        sql: false
+        syslog: false
+        teams: true
 
     default:
         web: true
@@ -274,6 +292,11 @@ globalprotect:
         sql: false
         syslog: false
         teams: true
+    portal-auth_error:
+        web: true
+        sql: false
+        syslog: false
+        teams: true
     portal-gen-cookie:
         web: true
         sql: false
@@ -296,6 +319,11 @@ globalprotect:
         syslog: false
         teams: true
     gateway-auth:
+        web: true
+        sql: false
+        syslog: false
+        teams: true
+    gateway-auth_error:
         web: true
         sql: false
         syslog: false
@@ -330,6 +358,11 @@ globalprotect:
         sql: false
         syslog: false
         teams: true
+    gateway-hip-report_error:
+        web: true
+        sql: false
+        syslog: false
+        teams: true
     gateway-inheritance:
         web: true
         sql: false
@@ -346,6 +379,11 @@ globalprotect:
         syslog: false
         teams: true
     gateway-register:
+        web: true
+        sql: false
+        syslog: false
+        teams: true
+    gateway-register_register:
         web: true
         sql: false
         syslog: false
@@ -370,6 +408,12 @@ globalprotect:
         sql: false
         syslog: false
         teams: true
+    gateway-tunnel-notify:
+        web: true
+        sql: false
+        syslog: false
+        teams: true
+    
     quarantine-add:
         web: true
         sql: false
